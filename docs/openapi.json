@@ -1,0 +1,4449 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "FlowSense API",
+  "description": "AI-powered city traffic intelligence. ALL traffic data is simulated.",
+  "version": "1.0.0"
+ },
+ "paths": {
+  "/api/health": {
+   "get": {
+    "tags": [
+     "health"
+    ],
+    "summary": "Health",
+    "operationId": "health_api_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/auth/register": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Register",
+    "description": "Public sign-up. New accounts are always 'viewer'; only an admin can promote them.",
+    "operationId": "register_api_auth_register_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RegisterIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/auth/login": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Login",
+    "operationId": "login_api_auth_login_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LoginIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TokenOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/auth/me": {
+   "get": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Me",
+    "operationId": "me_api_auth_me_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserOut"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/auth/users": {
+   "get": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Users",
+    "operationId": "users_api_auth_users_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/UserOut"
+         },
+         "type": "array",
+         "title": "Response Users Api Auth Users Get"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/auth/users/{user_id}/role": {
+   "patch": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Change Role",
+    "operationId": "change_role_api_auth_users__user_id__role_patch",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "user_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "User Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RoleUpdate"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/UserOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/roads": {
+   "get": {
+    "tags": [
+     "traffic"
+    ],
+    "summary": "Roads",
+    "operationId": "roads_api_roads_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/RoadOut"
+         },
+         "type": "array",
+         "title": "Response Roads Api Roads Get"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/intersections": {
+   "get": {
+    "tags": [
+     "traffic"
+    ],
+    "summary": "Intersections",
+    "operationId": "intersections_api_intersections_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/IntersectionOut"
+         },
+         "type": "array",
+         "title": "Response Intersections Api Intersections Get"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/traffic/live": {
+   "get": {
+    "tags": [
+     "traffic"
+    ],
+    "summary": "Live",
+    "operationId": "live_api_traffic_live_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/LiveTrafficOut"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/traffic/history/{road_id}": {
+   "get": {
+    "tags": [
+     "traffic"
+    ],
+    "summary": "History",
+    "operationId": "history_api_traffic_history__road_id__get",
+    "parameters": [
+     {
+      "name": "road_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Road Id"
+      }
+     },
+     {
+      "name": "hours",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 168,
+       "minimum": 1,
+       "default": 24,
+       "title": "Hours"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 2000,
+       "minimum": 1,
+       "default": 500,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Page_HistoryPoint_"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/traffic/{road_id}": {
+   "get": {
+    "tags": [
+     "traffic"
+    ],
+    "summary": "Road",
+    "operationId": "road_api_traffic__road_id__get",
+    "parameters": [
+     {
+      "name": "road_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Road Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RoadTrafficOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/predictions/overview": {
+   "get": {
+    "tags": [
+     "predictions"
+    ],
+    "summary": "Overview",
+    "operationId": "overview_api_predictions_overview_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/PredictionOverviewOut"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/predictions/model-info": {
+   "get": {
+    "tags": [
+     "predictions"
+    ],
+    "summary": "Model Info",
+    "operationId": "model_info_api_predictions_model_info_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ModelInfoOut"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/predictions/{road_id}": {
+   "get": {
+    "tags": [
+     "predictions"
+    ],
+    "summary": "Road",
+    "operationId": "road_api_predictions__road_id__get",
+    "parameters": [
+     {
+      "name": "road_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Road Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RoadPredictionOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/predictions": {
+   "post": {
+    "tags": [
+     "predictions"
+    ],
+    "summary": "Create",
+    "operationId": "create_api_predictions_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PredictionRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/PredictionOut"
+         },
+         "type": "array",
+         "title": "Response Create Api Predictions Post"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/signals": {
+   "get": {
+    "tags": [
+     "signals"
+    ],
+    "summary": "List Signals",
+    "operationId": "list_signals_api_signals_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/SignalOut"
+         },
+         "type": "array",
+         "title": "Response List Signals Api Signals Get"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/signals/optimize": {
+   "post": {
+    "tags": [
+     "signals"
+    ],
+    "summary": "Optimize",
+    "operationId": "optimize_api_signals_optimize_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OptimizeRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/OptimizeOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/signals/{intersection_id}": {
+   "get": {
+    "tags": [
+     "signals"
+    ],
+    "summary": "Detail",
+    "operationId": "detail_api_signals__intersection_id__get",
+    "parameters": [
+     {
+      "name": "intersection_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Intersection Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/SignalDetailOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/signals/{intersection_id}/reset": {
+   "post": {
+    "tags": [
+     "signals"
+    ],
+    "summary": "Reset",
+    "description": "Return a signal to fixed-time operation.",
+    "operationId": "reset_api_signals__intersection_id__reset_post",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "intersection_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Intersection Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/SignalDetailOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/emergency-vehicles": {
+   "get": {
+    "tags": [
+     "emergency"
+    ],
+    "summary": "Vehicles",
+    "operationId": "vehicles_api_emergency_vehicles_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/EmergencyVehicleOut"
+         },
+         "type": "array",
+         "title": "Response Vehicles Api Emergency Vehicles Get"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/routes/emergency": {
+   "post": {
+    "tags": [
+     "emergency"
+    ],
+    "summary": "Plan",
+    "operationId": "plan_api_routes_emergency_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RouteRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RouteOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/routes": {
+   "get": {
+    "tags": [
+     "emergency"
+    ],
+    "summary": "Recent",
+    "operationId": "recent_api_routes_get",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "default": 20,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/RouteOut"
+         },
+         "title": "Response Recent Api Routes Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/routes/{route_id}": {
+   "get": {
+    "tags": [
+     "emergency"
+    ],
+    "summary": "Get Route",
+    "operationId": "get_route_api_routes__route_id__get",
+    "parameters": [
+     {
+      "name": "route_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Route Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RouteOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/routes/{route_id}/recalculate": {
+   "post": {
+    "tags": [
+     "emergency"
+    ],
+    "summary": "Recalc",
+    "operationId": "recalc_api_routes__route_id__recalculate_post",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "route_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Route Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RecalcOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/accidents": {
+   "get": {
+    "tags": [
+     "accidents"
+    ],
+    "summary": "List Accidents",
+    "operationId": "list_accidents_api_accidents_get",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 1000,
+       "minimum": 1,
+       "default": 100,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     },
+     {
+      "name": "date_from",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "format": "date-time"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date From"
+      }
+     },
+     {
+      "name": "date_to",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "format": "date-time"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date To"
+      }
+     },
+     {
+      "name": "severity",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "enum": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+         ],
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Severity"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Page_AccidentOut_"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/accidents/hotspots": {
+   "get": {
+    "tags": [
+     "accidents"
+    ],
+    "summary": "Hotspots",
+    "operationId": "hotspots_api_accidents_hotspots_get",
+    "parameters": [
+     {
+      "name": "eps_m",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "number",
+       "maximum": 1000,
+       "minimum": 30,
+       "default": 150,
+       "title": "Eps M"
+      }
+     },
+     {
+      "name": "min_samples",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 100,
+       "minimum": 3,
+       "default": 8,
+       "title": "Min Samples"
+      }
+     },
+     {
+      "name": "date_from",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "format": "date-time"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date From"
+      }
+     },
+     {
+      "name": "date_to",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "format": "date-time"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date To"
+      }
+     },
+     {
+      "name": "severity",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "enum": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+         ],
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Severity"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HotspotsOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/accidents/analytics": {
+   "get": {
+    "tags": [
+     "accidents"
+    ],
+    "summary": "Analytics",
+    "operationId": "analytics_api_accidents_analytics_get",
+    "parameters": [
+     {
+      "name": "date_from",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "format": "date-time"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date From"
+      }
+     },
+     {
+      "name": "date_to",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "format": "date-time"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Date To"
+      }
+     },
+     {
+      "name": "severity",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "enum": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+         ],
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Severity"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AccidentAnalyticsOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/incidents": {
+   "post": {
+    "tags": [
+     "incidents"
+    ],
+    "summary": "Create",
+    "description": "Any signed-in user can report an incident.",
+    "operationId": "create_api_incidents_post",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IncidentCreate"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/IncidentOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "incidents"
+    ],
+    "summary": "List Incidents",
+    "operationId": "list_incidents_api_incidents_get",
+    "parameters": [
+     {
+      "name": "status",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "enum": [
+          "reported",
+          "verified",
+          "in_progress",
+          "resolved"
+         ],
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Status"
+      }
+     },
+     {
+      "name": "severity",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "enum": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+         ],
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Severity"
+      }
+     },
+     {
+      "name": "road_id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Road Id"
+      }
+     },
+     {
+      "name": "active_only",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean",
+       "default": false,
+       "title": "Active Only"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 500,
+       "minimum": 1,
+       "default": 50,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Page_IncidentOut_"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/incidents/{incident_id}": {
+   "get": {
+    "tags": [
+     "incidents"
+    ],
+    "summary": "Get",
+    "operationId": "get_api_incidents__incident_id__get",
+    "parameters": [
+     {
+      "name": "incident_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Incident Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/IncidentOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "patch": {
+    "tags": [
+     "incidents"
+    ],
+    "summary": "Update",
+    "operationId": "update_api_incidents__incident_id__patch",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "incident_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Incident Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IncidentUpdate"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/IncidentOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/incidents/{incident_id}/close-road": {
+   "post": {
+    "tags": [
+     "incidents"
+    ],
+    "summary": "Close Road",
+    "description": "Close the incident's road, then re-plan every emergency route that used it.",
+    "operationId": "close_road_api_incidents__incident_id__close_road_post",
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ],
+    "parameters": [
+     {
+      "name": "incident_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Incident Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CloseRoadOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/analytics/overview": {
+   "get": {
+    "tags": [
+     "analytics"
+    ],
+    "summary": "Overview",
+    "operationId": "overview_api_analytics_overview_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AnalyticsOverview"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/analytics/traffic-trends": {
+   "get": {
+    "tags": [
+     "analytics"
+    ],
+    "summary": "Trends",
+    "operationId": "trends_api_analytics_traffic_trends_get",
+    "parameters": [
+     {
+      "name": "hours",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 168,
+       "minimum": 1,
+       "default": 24,
+       "title": "Hours"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/TrendsOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/simulation/start": {
+   "post": {
+    "tags": [
+     "simulation"
+    ],
+    "summary": "Start",
+    "operationId": "start_api_simulation_start_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SimulationStartIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/SimulationStatusOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/simulation/stop": {
+   "post": {
+    "tags": [
+     "simulation"
+    ],
+    "summary": "Stop",
+    "operationId": "stop_api_simulation_stop_post",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/SimulationStatusOut"
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "HTTPBearer": []
+     }
+    ]
+   }
+  },
+  "/api/simulation/status": {
+   "get": {
+    "tags": [
+     "simulation"
+    ],
+    "summary": "Status",
+    "operationId": "status_api_simulation_status_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/SimulationStatusOut"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "AccidentAnalyticsOut": {
+    "properties": {
+     "total": {
+      "type": "integer",
+      "title": "Total"
+     },
+     "by_severity": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "By Severity"
+     },
+     "by_type": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "By Type"
+     },
+     "by_hour": {
+      "items": {
+       "type": "integer"
+      },
+      "type": "array",
+      "title": "By Hour"
+     },
+     "by_month": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "type": "array",
+      "title": "By Month"
+     },
+     "data_source": {
+      "type": "string",
+      "title": "Data Source",
+      "default": "simulated"
+     }
+    },
+    "type": "object",
+    "required": [
+     "total",
+     "by_severity",
+     "by_type",
+     "by_hour",
+     "by_month"
+    ],
+    "title": "AccidentAnalyticsOut"
+   },
+   "AccidentOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "road_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Road Id"
+     },
+     "accident_type": {
+      "type": "string",
+      "title": "Accident Type"
+     },
+     "severity": {
+      "type": "string",
+      "enum": [
+       "low",
+       "medium",
+       "high",
+       "critical"
+      ],
+      "title": "Severity"
+     },
+     "latitude": {
+      "type": "number",
+      "title": "Latitude"
+     },
+     "longitude": {
+      "type": "number",
+      "title": "Longitude"
+     },
+     "occurred_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Occurred At"
+     },
+     "data_source": {
+      "type": "string",
+      "title": "Data Source"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "road_id",
+     "accident_type",
+     "severity",
+     "latitude",
+     "longitude",
+     "occurred_at",
+     "data_source"
+    ],
+    "title": "AccidentOut"
+   },
+   "AnalyticsOverview": {
+    "properties": {
+     "data_source": {
+      "type": "string",
+      "title": "Data Source"
+     },
+     "as_of": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "As Of"
+     },
+     "roads_total": {
+      "type": "integer",
+      "title": "Roads Total"
+     },
+     "roads_closed": {
+      "type": "integer",
+      "title": "Roads Closed"
+     },
+     "total_vehicles": {
+      "type": "integer",
+      "title": "Total Vehicles"
+     },
+     "average_speed": {
+      "type": "number",
+      "title": "Average Speed"
+     },
+     "average_density": {
+      "type": "number",
+      "title": "Average Density"
+     },
+     "congested_roads": {
+      "type": "integer",
+      "title": "Congested Roads"
+     },
+     "congestion_distribution": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Congestion Distribution"
+     },
+     "active_incidents": {
+      "type": "integer",
+      "title": "Active Incidents"
+     },
+     "prediction": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Prediction"
+     },
+     "emergency": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Emergency"
+     },
+     "signal_performance": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Signal Performance"
+     },
+     "simulation": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Simulation"
+     }
+    },
+    "type": "object",
+    "required": [
+     "data_source",
+     "as_of",
+     "roads_total",
+     "roads_closed",
+     "total_vehicles",
+     "average_speed",
+     "average_density",
+     "congested_roads",
+     "congestion_distribution",
+     "active_incidents",
+     "prediction",
+     "emergency",
+     "signal_performance",
+     "simulation"
+    ],
+    "title": "AnalyticsOverview"
+   },
+   "ApproachOut": {
+    "properties": {
+     "road_id": {
+      "type": "integer",
+      "title": "Road Id"
+     },
+     "road_name": {
+      "type": "string",
+      "title": "Road Name"
+     },
+     "phase": {
+      "type": "string",
+      "enum": [
+       "NS",
+       "EW"
+      ],
+      "title": "Phase"
+     },
+     "vehicle_count": {
+      "type": "integer",
+      "title": "Vehicle Count"
+     },
+     "occupancy": {
+      "type": "number",
+      "title": "Occupancy"
+     },
+     "estimated_queue": {
+      "type": "number",
+      "title": "Estimated Queue"
+     },
+     "is_closed": {
+      "type": "boolean",
+      "title": "Is Closed"
+     }
+    },
+    "type": "object",
+    "required": [
+     "road_id",
+     "road_name",
+     "phase",
+     "vehicle_count",
+     "occupancy",
+     "estimated_queue",
+     "is_closed"
+    ],
+    "title": "ApproachOut"
+   },
+   "CloseRoadOut": {
+    "properties": {
+     "incident": {
+      "$ref": "#/components/schemas/IncidentOut"
+     },
+     "road_id": {
+      "type": "integer",
+      "title": "Road Id"
+     },
+     "rerouted_route_ids": {
+      "items": {
+       "type": "integer"
+      },
+      "type": "array",
+      "title": "Rerouted Route Ids"
+     },
+     "cancelled_route_ids": {
+      "items": {
+       "type": "integer"
+      },
+      "type": "array",
+      "title": "Cancelled Route Ids"
+     },
+     "message": {
+      "type": "string",
+      "title": "Message"
+     }
+    },
+    "type": "object",
+    "required": [
+     "incident",
+     "road_id",
+     "rerouted_route_ids",
+     "cancelled_route_ids",
+     "message"
+    ],
+    "title": "CloseRoadOut"
+   },
+   "EmergencyVehicleOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "unit_name": {
+      "type": "string",
+      "title": "Unit Name"
+     },
+     "vehicle_type": {
+      "type": "string",
+      "enum": [
+       "ambulance",
+       "fire_service"
+      ],
+      "title": "Vehicle Type"
+     },
+     "current_intersection_id": {
+      "type": "integer",
+      "title": "Current Intersection Id"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "unit_name",
+     "vehicle_type",
+     "current_intersection_id",
+     "status"
+    ],
+    "title": "EmergencyVehicleOut"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "HistoryPoint": {
+    "properties": {
+     "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Recorded At"
+     },
+     "vehicle_count": {
+      "type": "integer",
+      "title": "Vehicle Count"
+     },
+     "average_speed": {
+      "type": "number",
+      "title": "Average Speed"
+     },
+     "density": {
+      "type": "number",
+      "title": "Density"
+     },
+     "congestion_level": {
+      "type": "string",
+      "enum": [
+       "free_flow",
+       "moderate",
+       "heavy",
+       "severe",
+       "closed"
+      ],
+      "title": "Congestion Level"
+     }
+    },
+    "type": "object",
+    "required": [
+     "recorded_at",
+     "vehicle_count",
+     "average_speed",
+     "density",
+     "congestion_level"
+    ],
+    "title": "HistoryPoint"
+   },
+   "Hotspot": {
+    "properties": {
+     "rank": {
+      "type": "integer",
+      "title": "Rank"
+     },
+     "center_lat": {
+      "type": "number",
+      "title": "Center Lat"
+     },
+     "center_lon": {
+      "type": "number",
+      "title": "Center Lon"
+     },
+     "radius_m": {
+      "type": "number",
+      "title": "Radius M"
+     },
+     "accident_count": {
+      "type": "integer",
+      "title": "Accident Count"
+     },
+     "severity_counts": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Severity Counts"
+     },
+     "severity_score": {
+      "type": "integer",
+      "title": "Severity Score"
+     },
+     "top_accident_type": {
+      "type": "string",
+      "title": "Top Accident Type"
+     },
+     "accidents_per_month": {
+      "type": "number",
+      "title": "Accidents Per Month"
+     },
+     "first_occurrence": {
+      "type": "string",
+      "title": "First Occurrence"
+     },
+     "last_occurrence": {
+      "type": "string",
+      "title": "Last Occurrence"
+     },
+     "nearest_road": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Nearest Road"
+     }
+    },
+    "type": "object",
+    "required": [
+     "rank",
+     "center_lat",
+     "center_lon",
+     "radius_m",
+     "accident_count",
+     "severity_counts",
+     "severity_score",
+     "top_accident_type",
+     "accidents_per_month",
+     "first_occurrence",
+     "last_occurrence"
+    ],
+    "title": "Hotspot"
+   },
+   "HotspotsOut": {
+    "properties": {
+     "eps_m": {
+      "type": "number",
+      "title": "Eps M"
+     },
+     "min_samples": {
+      "type": "integer",
+      "title": "Min Samples"
+     },
+     "accidents_analysed": {
+      "type": "integer",
+      "title": "Accidents Analysed"
+     },
+     "clustered_accidents": {
+      "type": "integer",
+      "title": "Clustered Accidents"
+     },
+     "noise_accidents": {
+      "type": "integer",
+      "title": "Noise Accidents"
+     },
+     "hotspots": {
+      "items": {
+       "$ref": "#/components/schemas/Hotspot"
+      },
+      "type": "array",
+      "title": "Hotspots"
+     },
+     "disclaimer": {
+      "type": "string",
+      "title": "Disclaimer"
+     },
+     "data_source": {
+      "type": "string",
+      "title": "Data Source",
+      "default": "simulated"
+     }
+    },
+    "type": "object",
+    "required": [
+     "eps_m",
+     "min_samples",
+     "accidents_analysed",
+     "clustered_accidents",
+     "noise_accidents",
+     "hotspots",
+     "disclaimer"
+    ],
+    "title": "HotspotsOut"
+   },
+   "HourlyPoint": {
+    "properties": {
+     "hour": {
+      "type": "integer",
+      "title": "Hour"
+     },
+     "average_density": {
+      "type": "number",
+      "title": "Average Density"
+     },
+     "average_speed": {
+      "type": "number",
+      "title": "Average Speed"
+     }
+    },
+    "type": "object",
+    "required": [
+     "hour",
+     "average_density",
+     "average_speed"
+    ],
+    "title": "HourlyPoint"
+   },
+   "Improvement": {
+    "properties": {
+     "wait_reduction_pct": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Wait Reduction Pct"
+     },
+     "queue_reduction_pct": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Queue Reduction Pct"
+     },
+     "throughput_change_pct": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Throughput Change Pct"
+     },
+     "verdict": {
+      "type": "string",
+      "title": "Verdict"
+     }
+    },
+    "type": "object",
+    "required": [
+     "wait_reduction_pct",
+     "queue_reduction_pct",
+     "throughput_change_pct",
+     "verdict"
+    ],
+    "title": "Improvement"
+   },
+   "IncidentCreate": {
+    "properties": {
+     "road_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Road Id"
+     },
+     "incident_type": {
+      "type": "string",
+      "enum": [
+       "accident",
+       "breakdown",
+       "road_work",
+       "flooding",
+       "event",
+       "hazard",
+       "other"
+      ],
+      "title": "Incident Type"
+     },
+     "severity": {
+      "type": "string",
+      "enum": [
+       "low",
+       "medium",
+       "high",
+       "critical"
+      ],
+      "title": "Severity"
+     },
+     "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "title": "Description",
+      "default": ""
+     },
+     "latitude": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 90.0,
+        "minimum": -90.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Latitude"
+     },
+     "longitude": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 180.0,
+        "minimum": -180.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Longitude"
+     }
+    },
+    "type": "object",
+    "required": [
+     "incident_type",
+     "severity"
+    ],
+    "title": "IncidentCreate"
+   },
+   "IncidentOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "road_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Road Id"
+     },
+     "road_name": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Road Name"
+     },
+     "incident_type": {
+      "type": "string",
+      "enum": [
+       "accident",
+       "breakdown",
+       "road_work",
+       "flooding",
+       "event",
+       "hazard",
+       "other"
+      ],
+      "title": "Incident Type"
+     },
+     "severity": {
+      "type": "string",
+      "enum": [
+       "low",
+       "medium",
+       "high",
+       "critical"
+      ],
+      "title": "Severity"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description"
+     },
+     "latitude": {
+      "type": "number",
+      "title": "Latitude"
+     },
+     "longitude": {
+      "type": "number",
+      "title": "Longitude"
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "reported",
+       "verified",
+       "in_progress",
+       "resolved"
+      ],
+      "title": "Status"
+     },
+     "closes_road": {
+      "type": "boolean",
+      "title": "Closes Road"
+     },
+     "reported_by": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Reported By"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+     },
+     "resolved_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Resolved At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "road_id",
+     "incident_type",
+     "severity",
+     "description",
+     "latitude",
+     "longitude",
+     "status",
+     "closes_road",
+     "reported_by",
+     "created_at",
+     "updated_at",
+     "resolved_at"
+    ],
+    "title": "IncidentOut"
+   },
+   "IncidentUpdate": {
+    "properties": {
+     "status": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "reported",
+         "verified",
+         "in_progress",
+         "resolved"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Status"
+     },
+     "severity": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "low",
+         "medium",
+         "high",
+         "critical"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Severity"
+     },
+     "description": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 1000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Description"
+     }
+    },
+    "type": "object",
+    "title": "IncidentUpdate"
+   },
+   "IntersectionOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "latitude": {
+      "type": "number",
+      "title": "Latitude"
+     },
+     "longitude": {
+      "type": "number",
+      "title": "Longitude"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "latitude",
+     "longitude"
+    ],
+    "title": "IntersectionOut"
+   },
+   "LiveTrafficOut": {
+    "properties": {
+     "data_source": {
+      "type": "string",
+      "enum": [
+       "simulated",
+       "sensor"
+      ],
+      "title": "Data Source"
+     },
+     "notice": {
+      "type": "string",
+      "title": "Notice"
+     },
+     "summary": {
+      "$ref": "#/components/schemas/TrafficSummary"
+     },
+     "roads": {
+      "items": {
+       "$ref": "#/components/schemas/RoadTrafficOut"
+      },
+      "type": "array",
+      "title": "Roads"
+     }
+    },
+    "type": "object",
+    "required": [
+     "data_source",
+     "notice",
+     "summary",
+     "roads"
+    ],
+    "title": "LiveTrafficOut"
+   },
+   "LoginIn": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Password"
+     }
+    },
+    "type": "object",
+    "required": [
+     "email",
+     "password"
+    ],
+    "title": "LoginIn"
+   },
+   "ModelInfoOut": {
+    "properties": {
+     "available": {
+      "type": "boolean",
+      "title": "Available"
+     },
+     "message": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Message"
+     },
+     "info": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Info"
+     }
+    },
+    "type": "object",
+    "required": [
+     "available"
+    ],
+    "title": "ModelInfoOut"
+   },
+   "OptimizeOut": {
+    "properties": {
+     "run_id": {
+      "type": "integer",
+      "title": "Run Id"
+     },
+     "intersection_id": {
+      "type": "integer",
+      "title": "Intersection Id"
+     },
+     "intersection_name": {
+      "type": "string",
+      "title": "Intersection Name"
+     },
+     "scenario": {
+      "type": "string",
+      "enum": [
+       "live",
+       "balanced",
+       "ns_heavy",
+       "shifting"
+      ],
+      "title": "Scenario"
+     },
+     "duration_s": {
+      "type": "integer",
+      "title": "Duration S"
+     },
+     "seed": {
+      "type": "integer",
+      "title": "Seed"
+     },
+     "applied": {
+      "type": "boolean",
+      "title": "Applied"
+     },
+     "approaches": {
+      "items": {
+       "$ref": "#/components/schemas/ApproachOut"
+      },
+      "type": "array",
+      "title": "Approaches"
+     },
+     "fixed_timing": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "adaptive_timing": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "fixed": {
+      "$ref": "#/components/schemas/SimMetrics"
+     },
+     "adaptive": {
+      "$ref": "#/components/schemas/SimMetrics"
+     },
+     "improvement": {
+      "$ref": "#/components/schemas/Improvement"
+     },
+     "notice": {
+      "type": "string",
+      "title": "Notice"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "run_id",
+     "intersection_id",
+     "intersection_name",
+     "scenario",
+     "duration_s",
+     "seed",
+     "applied",
+     "approaches",
+     "fixed_timing",
+     "adaptive_timing",
+     "fixed",
+     "adaptive",
+     "improvement",
+     "notice",
+     "created_at"
+    ],
+    "title": "OptimizeOut"
+   },
+   "OptimizeRequest": {
+    "properties": {
+     "intersection_id": {
+      "type": "integer",
+      "title": "Intersection Id"
+     },
+     "scenario": {
+      "type": "string",
+      "enum": [
+       "live",
+       "balanced",
+       "ns_heavy",
+       "shifting"
+      ],
+      "title": "Scenario",
+      "default": "live"
+     },
+     "duration_s": {
+      "type": "integer",
+      "maximum": 14400.0,
+      "minimum": 300.0,
+      "title": "Duration S",
+      "default": 3600
+     },
+     "seed": {
+      "type": "integer",
+      "maximum": 2147483647.0,
+      "minimum": 0.0,
+      "title": "Seed",
+      "default": 42
+     },
+     "apply": {
+      "type": "boolean",
+      "title": "Apply",
+      "description": "Apply the recommended timing to the live signal (operator+)",
+      "default": false
+     }
+    },
+    "type": "object",
+    "required": [
+     "intersection_id"
+    ],
+    "title": "OptimizeRequest"
+   },
+   "Page_AccidentOut_": {
+    "properties": {
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/AccidentOut"
+      },
+      "type": "array",
+      "title": "Items"
+     },
+     "total": {
+      "type": "integer",
+      "title": "Total"
+     },
+     "limit": {
+      "type": "integer",
+      "title": "Limit"
+     },
+     "offset": {
+      "type": "integer",
+      "title": "Offset"
+     }
+    },
+    "type": "object",
+    "required": [
+     "items",
+     "total",
+     "limit",
+     "offset"
+    ],
+    "title": "Page[AccidentOut]"
+   },
+   "Page_HistoryPoint_": {
+    "properties": {
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/HistoryPoint"
+      },
+      "type": "array",
+      "title": "Items"
+     },
+     "total": {
+      "type": "integer",
+      "title": "Total"
+     },
+     "limit": {
+      "type": "integer",
+      "title": "Limit"
+     },
+     "offset": {
+      "type": "integer",
+      "title": "Offset"
+     }
+    },
+    "type": "object",
+    "required": [
+     "items",
+     "total",
+     "limit",
+     "offset"
+    ],
+    "title": "Page[HistoryPoint]"
+   },
+   "Page_IncidentOut_": {
+    "properties": {
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/IncidentOut"
+      },
+      "type": "array",
+      "title": "Items"
+     },
+     "total": {
+      "type": "integer",
+      "title": "Total"
+     },
+     "limit": {
+      "type": "integer",
+      "title": "Limit"
+     },
+     "offset": {
+      "type": "integer",
+      "title": "Offset"
+     }
+    },
+    "type": "object",
+    "required": [
+     "items",
+     "total",
+     "limit",
+     "offset"
+    ],
+    "title": "Page[IncidentOut]"
+   },
+   "PlannedRoute": {
+    "properties": {
+     "nodes": {
+      "items": {
+       "$ref": "#/components/schemas/RouteNode"
+      },
+      "type": "array",
+      "title": "Nodes"
+     },
+     "roads": {
+      "items": {
+       "$ref": "#/components/schemas/RouteRoad"
+      },
+      "type": "array",
+      "title": "Roads"
+     },
+     "geometry": {
+      "items": {
+       "items": {
+        "type": "number"
+       },
+       "type": "array"
+      },
+      "type": "array",
+      "title": "Geometry"
+     },
+     "distance_m": {
+      "type": "number",
+      "title": "Distance M"
+     },
+     "time_s": {
+      "type": "number",
+      "title": "Time S"
+     },
+     "nodes_expanded": {
+      "type": "integer",
+      "title": "Nodes Expanded"
+     },
+     "algorithm": {
+      "type": "string",
+      "title": "Algorithm"
+     },
+     "objective": {
+      "type": "string",
+      "title": "Objective"
+     }
+    },
+    "type": "object",
+    "required": [
+     "nodes",
+     "roads",
+     "geometry",
+     "distance_m",
+     "time_s",
+     "nodes_expanded",
+     "algorithm",
+     "objective"
+    ],
+    "title": "PlannedRoute"
+   },
+   "PredictionOut": {
+    "properties": {
+     "road_id": {
+      "type": "integer",
+      "title": "Road Id"
+     },
+     "road_name": {
+      "type": "string",
+      "title": "Road Name"
+     },
+     "current_density": {
+      "type": "number",
+      "title": "Current Density"
+     },
+     "current_speed": {
+      "type": "number",
+      "title": "Current Speed"
+     },
+     "current_level": {
+      "type": "string",
+      "enum": [
+       "free_flow",
+       "moderate",
+       "heavy",
+       "severe"
+      ],
+      "title": "Current Level"
+     },
+     "predicted_density": {
+      "type": "number",
+      "title": "Predicted Density"
+     },
+     "predicted_speed": {
+      "type": "number",
+      "title": "Predicted Speed"
+     },
+     "predicted_occupancy": {
+      "type": "number",
+      "title": "Predicted Occupancy"
+     },
+     "congestion_level": {
+      "type": "string",
+      "enum": [
+       "free_flow",
+       "moderate",
+       "heavy",
+       "severe"
+      ],
+      "title": "Congestion Level"
+     },
+     "horizon_minutes": {
+      "type": "integer",
+      "title": "Horizon Minutes"
+     },
+     "target_time": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Target Time"
+     },
+     "predicted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Predicted At"
+     },
+     "model_version": {
+      "type": "string",
+      "title": "Model Version"
+     }
+    },
+    "type": "object",
+    "required": [
+     "road_id",
+     "road_name",
+     "current_density",
+     "current_speed",
+     "current_level",
+     "predicted_density",
+     "predicted_speed",
+     "predicted_occupancy",
+     "congestion_level",
+     "horizon_minutes",
+     "target_time",
+     "predicted_at",
+     "model_version"
+    ],
+    "title": "PredictionOut"
+   },
+   "PredictionOverviewOut": {
+    "properties": {
+     "model_available": {
+      "type": "boolean",
+      "title": "Model Available"
+     },
+     "message": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Message"
+     },
+     "horizon_minutes": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Horizon Minutes"
+     },
+     "summary": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Summary",
+      "default": {}
+     },
+     "predictions": {
+      "items": {
+       "$ref": "#/components/schemas/PredictionOut"
+      },
+      "type": "array",
+      "title": "Predictions",
+      "default": []
+     }
+    },
+    "type": "object",
+    "required": [
+     "model_available"
+    ],
+    "title": "PredictionOverviewOut"
+   },
+   "PredictionRequest": {
+    "properties": {
+     "road_ids": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "integer"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Road Ids",
+      "description": "Roads to predict; omit for all roads"
+     },
+     "persist": {
+      "type": "boolean",
+      "title": "Persist",
+      "default": true
+     }
+    },
+    "type": "object",
+    "title": "PredictionRequest"
+   },
+   "RecalcOut": {
+    "properties": {
+     "route": {
+      "$ref": "#/components/schemas/RouteOut"
+     },
+     "changed": {
+      "type": "boolean",
+      "title": "Changed"
+     },
+     "previous_time_s": {
+      "type": "number",
+      "title": "Previous Time S"
+     },
+     "new_time_s": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "New Time S"
+     }
+    },
+    "type": "object",
+    "required": [
+     "route",
+     "changed",
+     "previous_time_s",
+     "new_time_s"
+    ],
+    "title": "RecalcOut"
+   },
+   "RegisterIn": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "maxLength": 100,
+      "minLength": 1,
+      "title": "Name"
+     },
+     "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 128,
+      "minLength": 8,
+      "title": "Password"
+     }
+    },
+    "type": "object",
+    "required": [
+     "name",
+     "email",
+     "password"
+    ],
+    "title": "RegisterIn"
+   },
+   "RoadOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "road_name": {
+      "type": "string",
+      "title": "Road Name"
+     },
+     "start_node_id": {
+      "type": "integer",
+      "title": "Start Node Id"
+     },
+     "end_node_id": {
+      "type": "integer",
+      "title": "End Node Id"
+     },
+     "length_m": {
+      "type": "number",
+      "title": "Length M"
+     },
+     "lanes": {
+      "type": "integer",
+      "title": "Lanes"
+     },
+     "speed_limit_kmh": {
+      "type": "number",
+      "title": "Speed Limit Kmh"
+     },
+     "road_type": {
+      "type": "string",
+      "title": "Road Type"
+     },
+     "capacity": {
+      "type": "integer",
+      "title": "Capacity"
+     },
+     "geometry": {
+      "items": {
+       "items": {
+        "type": "number"
+       },
+       "type": "array"
+      },
+      "type": "array",
+      "title": "Geometry"
+     },
+     "is_closed": {
+      "type": "boolean",
+      "title": "Is Closed"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "road_name",
+     "start_node_id",
+     "end_node_id",
+     "length_m",
+     "lanes",
+     "speed_limit_kmh",
+     "road_type",
+     "capacity",
+     "geometry",
+     "is_closed"
+    ],
+    "title": "RoadOut"
+   },
+   "RoadPredictionOut": {
+    "properties": {
+     "road_id": {
+      "type": "integer",
+      "title": "Road Id"
+     },
+     "model_available": {
+      "type": "boolean",
+      "title": "Model Available"
+     },
+     "latest": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/PredictionOut"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "history": {
+      "items": {
+       "$ref": "#/components/schemas/StoredPredictionOut"
+      },
+      "type": "array",
+      "title": "History",
+      "default": []
+     }
+    },
+    "type": "object",
+    "required": [
+     "road_id",
+     "model_available"
+    ],
+    "title": "RoadPredictionOut"
+   },
+   "RoadTrafficOut": {
+    "properties": {
+     "road_id": {
+      "type": "integer",
+      "title": "Road Id"
+     },
+     "road_name": {
+      "type": "string",
+      "title": "Road Name"
+     },
+     "road_type": {
+      "type": "string",
+      "title": "Road Type"
+     },
+     "vehicle_count": {
+      "type": "integer",
+      "title": "Vehicle Count"
+     },
+     "average_speed": {
+      "type": "number",
+      "title": "Average Speed"
+     },
+     "density": {
+      "type": "number",
+      "title": "Density"
+     },
+     "occupancy": {
+      "type": "number",
+      "title": "Occupancy"
+     },
+     "congestion_level": {
+      "type": "string",
+      "enum": [
+       "free_flow",
+       "moderate",
+       "heavy",
+       "severe",
+       "closed"
+      ],
+      "title": "Congestion Level"
+     },
+     "is_closed": {
+      "type": "boolean",
+      "title": "Is Closed"
+     },
+     "recorded_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Recorded At"
+     },
+     "data_source": {
+      "type": "string",
+      "enum": [
+       "simulated",
+       "sensor"
+      ],
+      "title": "Data Source",
+      "default": "simulated"
+     }
+    },
+    "type": "object",
+    "required": [
+     "road_id",
+     "road_name",
+     "road_type",
+     "vehicle_count",
+     "average_speed",
+     "density",
+     "occupancy",
+     "congestion_level",
+     "is_closed",
+     "recorded_at"
+    ],
+    "title": "RoadTrafficOut"
+   },
+   "RoleUpdate": {
+    "properties": {
+     "role": {
+      "type": "string",
+      "enum": [
+       "viewer",
+       "operator",
+       "admin"
+      ],
+      "title": "Role"
+     }
+    },
+    "type": "object",
+    "required": [
+     "role"
+    ],
+    "title": "RoleUpdate"
+   },
+   "RouteComparison": {
+    "properties": {
+     "fastest_time_s": {
+      "type": "number",
+      "title": "Fastest Time S"
+     },
+     "fastest_distance_m": {
+      "type": "number",
+      "title": "Fastest Distance M"
+     },
+     "shortest_time_s": {
+      "type": "number",
+      "title": "Shortest Time S"
+     },
+     "shortest_distance_m": {
+      "type": "number",
+      "title": "Shortest Distance M"
+     },
+     "same_route": {
+      "type": "boolean",
+      "title": "Same Route"
+     },
+     "time_saved_by_fastest_s": {
+      "type": "number",
+      "title": "Time Saved By Fastest S"
+     }
+    },
+    "type": "object",
+    "required": [
+     "fastest_time_s",
+     "fastest_distance_m",
+     "shortest_time_s",
+     "shortest_distance_m",
+     "same_route",
+     "time_saved_by_fastest_s"
+    ],
+    "title": "RouteComparison"
+   },
+   "RouteNode": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "lat": {
+      "type": "number",
+      "title": "Lat"
+     },
+     "lon": {
+      "type": "number",
+      "title": "Lon"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "lat",
+     "lon"
+    ],
+    "title": "RouteNode"
+   },
+   "RouteOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "vehicle_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Vehicle Id"
+     },
+     "vehicle_type": {
+      "type": "string",
+      "enum": [
+       "ambulance",
+       "fire_service"
+      ],
+      "title": "Vehicle Type"
+     },
+     "origin_intersection_id": {
+      "type": "integer",
+      "title": "Origin Intersection Id"
+     },
+     "destination_intersection_id": {
+      "type": "integer",
+      "title": "Destination Intersection Id"
+     },
+     "algorithm": {
+      "type": "string",
+      "title": "Algorithm"
+     },
+     "objective": {
+      "type": "string",
+      "title": "Objective"
+     },
+     "route": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/PlannedRoute"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "alternative": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/PlannedRoute"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "comparison": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/RouteComparison"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "reroute_count": {
+      "type": "integer",
+      "title": "Reroute Count"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Note"
+     },
+     "data_source": {
+      "type": "string",
+      "title": "Data Source",
+      "default": "simulated"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "status",
+     "vehicle_id",
+     "vehicle_type",
+     "origin_intersection_id",
+     "destination_intersection_id",
+     "algorithm",
+     "objective",
+     "route",
+     "alternative",
+     "comparison",
+     "reroute_count",
+     "created_at",
+     "updated_at"
+    ],
+    "title": "RouteOut"
+   },
+   "RouteRequest": {
+    "properties": {
+     "vehicle_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Vehicle Id"
+     },
+     "vehicle_type": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "ambulance",
+         "fire_service"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Vehicle Type"
+     },
+     "origin_intersection_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Origin Intersection Id"
+     },
+     "destination_intersection_id": {
+      "type": "integer",
+      "title": "Destination Intersection Id"
+     },
+     "algorithm": {
+      "type": "string",
+      "enum": [
+       "astar",
+       "dijkstra"
+      ],
+      "title": "Algorithm",
+      "default": "astar"
+     },
+     "objective": {
+      "type": "string",
+      "enum": [
+       "fastest",
+       "shortest"
+      ],
+      "title": "Objective",
+      "default": "fastest"
+     },
+     "include_alternative": {
+      "type": "boolean",
+      "title": "Include Alternative",
+      "default": true
+     }
+    },
+    "type": "object",
+    "required": [
+     "destination_intersection_id"
+    ],
+    "title": "RouteRequest"
+   },
+   "RouteRoad": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "length_m": {
+      "type": "number",
+      "title": "Length M"
+     },
+     "time_s": {
+      "type": "number",
+      "title": "Time S"
+     },
+     "congestion_level": {
+      "type": "string",
+      "title": "Congestion Level"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "length_m",
+     "time_s",
+     "congestion_level"
+    ],
+    "title": "RouteRoad"
+   },
+   "RunSummary": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "scenario": {
+      "type": "string",
+      "title": "Scenario"
+     },
+     "duration_s": {
+      "type": "integer",
+      "title": "Duration S"
+     },
+     "applied": {
+      "type": "boolean",
+      "title": "Applied"
+     },
+     "improvement": {
+      "additionalProperties": true,
+      "type": "object",
+      "title": "Improvement"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "scenario",
+     "duration_s",
+     "applied",
+     "improvement",
+     "created_at"
+    ],
+    "title": "RunSummary"
+   },
+   "SignalDetailOut": {
+    "properties": {
+     "intersection_id": {
+      "type": "integer",
+      "title": "Intersection Id"
+     },
+     "intersection_name": {
+      "type": "string",
+      "title": "Intersection Name"
+     },
+     "latitude": {
+      "type": "number",
+      "title": "Latitude"
+     },
+     "longitude": {
+      "type": "number",
+      "title": "Longitude"
+     },
+     "current_phase": {
+      "type": "string",
+      "enum": [
+       "NS",
+       "EW"
+      ],
+      "title": "Current Phase"
+     },
+     "green_duration": {
+      "type": "number",
+      "title": "Green Duration"
+     },
+     "mode": {
+      "type": "string",
+      "enum": [
+       "fixed",
+       "adaptive"
+      ],
+      "title": "Mode"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "current": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "fixed_baseline": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "recommended": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "total_estimated_queue": {
+      "type": "number",
+      "title": "Total Estimated Queue"
+     },
+     "pressure": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "type": "object",
+      "title": "Pressure"
+     },
+     "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+     },
+     "approaches": {
+      "items": {
+       "$ref": "#/components/schemas/ApproachOut"
+      },
+      "type": "array",
+      "title": "Approaches"
+     },
+     "last_run": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/RunSummary"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "intersection_id",
+     "intersection_name",
+     "latitude",
+     "longitude",
+     "current_phase",
+     "green_duration",
+     "mode",
+     "status",
+     "current",
+     "fixed_baseline",
+     "recommended",
+     "total_estimated_queue",
+     "pressure",
+     "updated_at",
+     "approaches"
+    ],
+    "title": "SignalDetailOut"
+   },
+   "SignalOut": {
+    "properties": {
+     "intersection_id": {
+      "type": "integer",
+      "title": "Intersection Id"
+     },
+     "intersection_name": {
+      "type": "string",
+      "title": "Intersection Name"
+     },
+     "latitude": {
+      "type": "number",
+      "title": "Latitude"
+     },
+     "longitude": {
+      "type": "number",
+      "title": "Longitude"
+     },
+     "current_phase": {
+      "type": "string",
+      "enum": [
+       "NS",
+       "EW"
+      ],
+      "title": "Current Phase"
+     },
+     "green_duration": {
+      "type": "number",
+      "title": "Green Duration"
+     },
+     "mode": {
+      "type": "string",
+      "enum": [
+       "fixed",
+       "adaptive"
+      ],
+      "title": "Mode"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "current": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "fixed_baseline": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "recommended": {
+      "$ref": "#/components/schemas/Timing"
+     },
+     "total_estimated_queue": {
+      "type": "number",
+      "title": "Total Estimated Queue"
+     },
+     "pressure": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "type": "object",
+      "title": "Pressure"
+     },
+     "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "intersection_id",
+     "intersection_name",
+     "latitude",
+     "longitude",
+     "current_phase",
+     "green_duration",
+     "mode",
+     "status",
+     "current",
+     "fixed_baseline",
+     "recommended",
+     "total_estimated_queue",
+     "pressure",
+     "updated_at"
+    ],
+    "title": "SignalOut"
+   },
+   "SimMetrics": {
+    "properties": {
+     "strategy": {
+      "type": "string",
+      "title": "Strategy"
+     },
+     "avg_wait_s": {
+      "type": "number",
+      "title": "Avg Wait S"
+     },
+     "throughput": {
+      "type": "integer",
+      "title": "Throughput"
+     },
+     "avg_queue": {
+      "type": "number",
+      "title": "Avg Queue"
+     },
+     "max_queue": {
+      "type": "integer",
+      "title": "Max Queue"
+     },
+     "final_queue": {
+      "type": "integer",
+      "title": "Final Queue"
+     },
+     "vehicles_arrived": {
+      "type": "integer",
+      "title": "Vehicles Arrived"
+     },
+     "queue_series": {
+      "items": {
+       "additionalProperties": {
+        "type": "number"
+       },
+       "type": "object"
+      },
+      "type": "array",
+      "title": "Queue Series"
+     }
+    },
+    "type": "object",
+    "required": [
+     "strategy",
+     "avg_wait_s",
+     "throughput",
+     "avg_queue",
+     "max_queue",
+     "final_queue",
+     "vehicles_arrived",
+     "queue_series"
+    ],
+    "title": "SimMetrics"
+   },
+   "SimulationStartIn": {
+    "properties": {
+     "tick_interval_s": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 60.0,
+        "minimum": 0.2
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Tick Interval S"
+     },
+     "minutes_per_tick": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 15.0,
+        "minimum": 1.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Minutes Per Tick"
+     },
+     "signal_mode": {
+      "type": "string",
+      "enum": [
+       "fixed",
+       "adaptive"
+      ],
+      "title": "Signal Mode",
+      "default": "fixed"
+     },
+     "demand_multiplier": {
+      "type": "number",
+      "maximum": 1.6,
+      "minimum": 0.2,
+      "title": "Demand Multiplier",
+      "default": 1.0
+     },
+     "seed": {
+      "type": "integer",
+      "title": "Seed",
+      "default": 42
+     }
+    },
+    "type": "object",
+    "title": "SimulationStartIn"
+   },
+   "SimulationStatusOut": {
+    "properties": {
+     "running": {
+      "type": "boolean",
+      "title": "Running"
+     },
+     "data_source": {
+      "type": "string",
+      "title": "Data Source",
+      "default": "simulated"
+     },
+     "tick": {
+      "type": "integer",
+      "title": "Tick"
+     },
+     "sim_time": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Sim Time"
+     },
+     "signal_mode": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Signal Mode"
+     },
+     "tick_interval_s": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Tick Interval S"
+     },
+     "minutes_per_tick": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Minutes Per Tick"
+     },
+     "demand_multiplier": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Demand Multiplier"
+     },
+     "connected_clients": {
+      "type": "integer",
+      "title": "Connected Clients"
+     },
+     "last_error": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Error"
+     }
+    },
+    "type": "object",
+    "required": [
+     "running",
+     "tick",
+     "sim_time",
+     "signal_mode",
+     "tick_interval_s",
+     "minutes_per_tick",
+     "demand_multiplier",
+     "connected_clients"
+    ],
+    "title": "SimulationStatusOut"
+   },
+   "StoredPredictionOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "road_id": {
+      "type": "integer",
+      "title": "Road Id"
+     },
+     "predicted_density": {
+      "type": "number",
+      "title": "Predicted Density"
+     },
+     "predicted_speed": {
+      "type": "number",
+      "title": "Predicted Speed"
+     },
+     "congestion_level": {
+      "type": "string",
+      "enum": [
+       "free_flow",
+       "moderate",
+       "heavy",
+       "severe"
+      ],
+      "title": "Congestion Level"
+     },
+     "horizon_minutes": {
+      "type": "integer",
+      "title": "Horizon Minutes"
+     },
+     "target_time": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Target Time"
+     },
+     "predicted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Predicted At"
+     },
+     "model_version": {
+      "type": "string",
+      "title": "Model Version"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "road_id",
+     "predicted_density",
+     "predicted_speed",
+     "congestion_level",
+     "horizon_minutes",
+     "target_time",
+     "predicted_at",
+     "model_version"
+    ],
+    "title": "StoredPredictionOut"
+   },
+   "Timing": {
+    "properties": {
+     "ns_green_s": {
+      "type": "number",
+      "title": "Ns Green S"
+     },
+     "ew_green_s": {
+      "type": "number",
+      "title": "Ew Green S"
+     },
+     "cycle_s": {
+      "type": "number",
+      "title": "Cycle S"
+     }
+    },
+    "type": "object",
+    "required": [
+     "ns_green_s",
+     "ew_green_s",
+     "cycle_s"
+    ],
+    "title": "Timing"
+   },
+   "TokenOut": {
+    "properties": {
+     "access_token": {
+      "type": "string",
+      "title": "Access Token"
+     },
+     "token_type": {
+      "type": "string",
+      "const": "bearer",
+      "title": "Token Type",
+      "default": "bearer"
+     },
+     "user": {
+      "$ref": "#/components/schemas/UserOut"
+     }
+    },
+    "type": "object",
+    "required": [
+     "access_token",
+     "user"
+    ],
+    "title": "TokenOut"
+   },
+   "TrafficSummary": {
+    "properties": {
+     "total_vehicles": {
+      "type": "integer",
+      "title": "Total Vehicles"
+     },
+     "road_count": {
+      "type": "integer",
+      "title": "Road Count"
+     },
+     "open_roads": {
+      "type": "integer",
+      "title": "Open Roads"
+     },
+     "average_speed": {
+      "type": "number",
+      "title": "Average Speed"
+     },
+     "average_density": {
+      "type": "number",
+      "title": "Average Density"
+     },
+     "congested_roads": {
+      "type": "integer",
+      "title": "Congested Roads"
+     },
+     "level_counts": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "type": "object",
+      "title": "Level Counts"
+     },
+     "as_of": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "As Of"
+     }
+    },
+    "type": "object",
+    "required": [
+     "total_vehicles",
+     "road_count",
+     "open_roads",
+     "average_speed",
+     "average_density",
+     "congested_roads",
+     "level_counts",
+     "as_of"
+    ],
+    "title": "TrafficSummary"
+   },
+   "TrendPoint": {
+    "properties": {
+     "time": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Time"
+     },
+     "average_speed": {
+      "type": "number",
+      "title": "Average Speed"
+     },
+     "average_density": {
+      "type": "number",
+      "title": "Average Density"
+     },
+     "total_vehicles": {
+      "type": "integer",
+      "title": "Total Vehicles"
+     },
+     "congested_roads": {
+      "type": "integer",
+      "title": "Congested Roads"
+     }
+    },
+    "type": "object",
+    "required": [
+     "time",
+     "average_speed",
+     "average_density",
+     "total_vehicles",
+     "congested_roads"
+    ],
+    "title": "TrendPoint"
+   },
+   "TrendsOut": {
+    "properties": {
+     "data_source": {
+      "type": "string",
+      "title": "Data Source"
+     },
+     "hours": {
+      "type": "integer",
+      "title": "Hours"
+     },
+     "series": {
+      "items": {
+       "$ref": "#/components/schemas/TrendPoint"
+      },
+      "type": "array",
+      "title": "Series"
+     },
+     "hourly_pattern": {
+      "items": {
+       "$ref": "#/components/schemas/HourlyPoint"
+      },
+      "type": "array",
+      "title": "Hourly Pattern"
+     },
+     "comparison": {
+      "additionalProperties": {
+       "items": {
+        "$ref": "#/components/schemas/HourlyPoint"
+       },
+       "type": "array"
+      },
+      "type": "object",
+      "title": "Comparison"
+     }
+    },
+    "type": "object",
+    "required": [
+     "data_source",
+     "hours",
+     "series",
+     "hourly_pattern",
+     "comparison"
+    ],
+    "title": "TrendsOut"
+   },
+   "UserOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "email": {
+      "type": "string",
+      "title": "Email"
+     },
+     "role": {
+      "type": "string",
+      "enum": [
+       "viewer",
+       "operator",
+       "admin"
+      ],
+      "title": "Role"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "email",
+     "role",
+     "created_at"
+    ],
+    "title": "UserOut"
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   }
+  },
+  "securitySchemes": {
+   "HTTPBearer": {
+    "type": "http",
+    "scheme": "bearer"
+   }
+  }
+ }
+}

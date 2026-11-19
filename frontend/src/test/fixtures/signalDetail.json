@@ -1,0 +1,79 @@
+{
+ "intersection_id": 7,
+ "intersection_name": "Central Station",
+ "latitude": 18.522494,
+ "longitude": 73.854258,
+ "current_phase": "NS",
+ "green_duration": 41.0,
+ "mode": "fixed",
+ "status": "operational",
+ "current": {
+  "ns_green_s": 41.0,
+  "ew_green_s": 41.0,
+  "cycle_s": 90.0
+ },
+ "fixed_baseline": {
+  "ns_green_s": 41.0,
+  "ew_green_s": 41.0,
+  "cycle_s": 90.0
+ },
+ "recommended": {
+  "ns_green_s": 41.5,
+  "ew_green_s": 40.5,
+  "cycle_s": 90.0
+ },
+ "total_estimated_queue": 168.0,
+ "pressure": {
+  "NS": 85.1,
+  "EW": 82.9
+ },
+ "updated_at": "2026-11-16T09:28:31.835252Z",
+ "approaches": [
+  {
+   "road_id": 5,
+   "road_name": "Central Avenue (Second Section)",
+   "phase": "EW",
+   "vehicle_count": 123,
+   "occupancy": 0.3832,
+   "estimated_queue": 38.7,
+   "is_closed": false
+  },
+  {
+   "road_id": 6,
+   "road_name": "Central Avenue (Third Section)",
+   "phase": "EW",
+   "vehicle_count": 113,
+   "occupancy": 0.452,
+   "estimated_queue": 44.2,
+   "is_closed": false
+  },
+  {
+   "road_id": 19,
+   "road_name": "Hospital Road (First Section)",
+   "phase": "NS",
+   "vehicle_count": 85,
+   "occupancy": 0.457,
+   "estimated_queue": 33.7,
+   "is_closed": false
+  },
+  {
+   "road_id": 20,
+   "road_name": "Hospital Road (Second Section)",
+   "phase": "NS",
+   "vehicle_count": 84,
+   "occupancy": 0.5153,
+   "estimated_queue": 38.8,
+   "is_closed": false
+  },
+  {
+   "road_id": 26,
+   "road_name": "Stadium Link",
+   "phase": "NS",
+   "vehicle_count": 43,
+   "occupancy": 0.3644,
+   "estimated_queue": 12.6,
+   "is_closed": false
+  }
+ ],
+ "last_run": null
+}

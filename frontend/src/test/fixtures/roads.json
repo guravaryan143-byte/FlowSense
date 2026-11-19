@@ -1,0 +1,730 @@
+[
+ {
+  "id": 1,
+  "road_name": "Ring Road North (First Section)",
+  "start_node_id": 1,
+  "end_node_id": 2,
+  "length_m": 770.3,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 277,
+  "geometry": [
+   [
+    18.529153,
+    73.838511
+   ],
+   [
+    18.529411,
+    73.841894
+   ],
+   [
+    18.529611,
+    73.845801
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 2,
+  "road_name": "Ring Road North (Second Section)",
+  "start_node_id": 2,
+  "end_node_id": 3,
+  "length_m": 825.9,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 297,
+  "geometry": [
+   [
+    18.529611,
+    73.845801
+   ],
+   [
+    18.529266,
+    73.84953
+   ],
+   [
+    18.52945,
+    73.853612
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 3,
+  "road_name": "Ring Road North (Third Section)",
+  "start_node_id": 3,
+  "end_node_id": 4,
+  "length_m": 804.8,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 290,
+  "geometry": [
+   [
+    18.52945,
+    73.853612
+   ],
+   [
+    18.529224,
+    73.857368
+   ],
+   [
+    18.528781,
+    73.86121
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 4,
+  "road_name": "Central Avenue (First Section)",
+  "start_node_id": 5,
+  "end_node_id": 6,
+  "length_m": 730.1,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 263,
+  "geometry": [
+   [
+    18.521952,
+    73.838907
+   ],
+   [
+    18.521863,
+    73.842418
+   ],
+   [
+    18.521998,
+    73.845827
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 5,
+  "road_name": "Central Avenue (Second Section)",
+  "start_node_id": 6,
+  "end_node_id": 7,
+  "length_m": 890.6,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 321,
+  "geometry": [
+   [
+    18.521998,
+    73.845827
+   ],
+   [
+    18.522218,
+    73.849922
+   ],
+   [
+    18.522494,
+    73.854258
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 6,
+  "road_name": "Central Avenue (Third Section)",
+  "start_node_id": 7,
+  "end_node_id": 8,
+  "length_m": 693.9,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 250,
+  "geometry": [
+   [
+    18.522494,
+    73.854258
+   ],
+   [
+    18.52246,
+    73.857655
+   ],
+   [
+    18.522073,
+    73.860813
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 7,
+  "road_name": "Riverside Boulevard (First Section)",
+  "start_node_id": 9,
+  "end_node_id": 10,
+  "length_m": 699.7,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 168,
+  "geometry": [
+   [
+    18.515978,
+    73.839627
+   ],
+   [
+    18.515789,
+    73.842986
+   ],
+   [
+    18.515908,
+    73.846255
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 8,
+  "road_name": "Riverside Boulevard (Second Section)",
+  "start_node_id": 10,
+  "end_node_id": 11,
+  "length_m": 731.2,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 175,
+  "geometry": [
+   [
+    18.515908,
+    73.846255
+   ],
+   [
+    18.516203,
+    73.849935
+   ],
+   [
+    18.516467,
+    73.853165
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 9,
+  "road_name": "Riverside Boulevard (Third Section)",
+  "start_node_id": 11,
+  "end_node_id": 12,
+  "length_m": 816.9,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 196,
+  "geometry": [
+   [
+    18.516467,
+    73.853165
+   ],
+   [
+    18.516522,
+    73.856908
+   ],
+   [
+    18.516302,
+    73.860905
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 10,
+  "road_name": "Ring Road South (First Section)",
+  "start_node_id": 13,
+  "end_node_id": 14,
+  "length_m": 886.2,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 319,
+  "geometry": [
+   [
+    18.508502,
+    73.838465
+   ],
+   [
+    18.508905,
+    73.842425
+   ],
+   [
+    18.508732,
+    73.846843
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 11,
+  "road_name": "Ring Road South (Second Section)",
+  "start_node_id": 14,
+  "end_node_id": 15,
+  "length_m": 745.9,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 269,
+  "geometry": [
+   [
+    18.508732,
+    73.846843
+   ],
+   [
+    18.508593,
+    73.850533
+   ],
+   [
+    18.508553,
+    73.853914
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 12,
+  "road_name": "Ring Road South (Third Section)",
+  "start_node_id": 15,
+  "end_node_id": 16,
+  "length_m": 754.2,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 272,
+  "geometry": [
+   [
+    18.508553,
+    73.853914
+   ],
+   [
+    18.508665,
+    73.857461
+   ],
+   [
+    18.509194,
+    73.861021
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 13,
+  "road_name": "Western Expressway (First Section)",
+  "start_node_id": 1,
+  "end_node_id": 5,
+  "length_m": 802.0,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 289,
+  "geometry": [
+   [
+    18.529153,
+    73.838511
+   ],
+   [
+    18.525276,
+    73.83881
+   ],
+   [
+    18.521952,
+    73.838907
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 14,
+  "road_name": "Western Expressway (Second Section)",
+  "start_node_id": 5,
+  "end_node_id": 9,
+  "length_m": 668.7,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 241,
+  "geometry": [
+   [
+    18.521952,
+    73.838907
+   ],
+   [
+    18.519124,
+    73.839311
+   ],
+   [
+    18.515978,
+    73.839627
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 15,
+  "road_name": "Western Expressway (Third Section)",
+  "start_node_id": 9,
+  "end_node_id": 13,
+  "length_m": 840.8,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 303,
+  "geometry": [
+   [
+    18.515978,
+    73.839627
+   ],
+   [
+    18.512465,
+    73.838934
+   ],
+   [
+    18.508502,
+    73.838465
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 16,
+  "road_name": "Station Road (First Section)",
+  "start_node_id": 2,
+  "end_node_id": 6,
+  "length_m": 846.6,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 203,
+  "geometry": [
+   [
+    18.529611,
+    73.845801
+   ],
+   [
+    18.525922,
+    73.845871
+   ],
+   [
+    18.521998,
+    73.845827
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 17,
+  "road_name": "Station Road (Second Section)",
+  "start_node_id": 6,
+  "end_node_id": 10,
+  "length_m": 678.7,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 163,
+  "geometry": [
+   [
+    18.521998,
+    73.845827
+   ],
+   [
+    18.519001,
+    73.846015
+   ],
+   [
+    18.515908,
+    73.846255
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 18,
+  "road_name": "Station Road (Third Section)",
+  "start_node_id": 10,
+  "end_node_id": 14,
+  "length_m": 802.6,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 193,
+  "geometry": [
+   [
+    18.515908,
+    73.846255
+   ],
+   [
+    18.512524,
+    73.846816
+   ],
+   [
+    18.508732,
+    73.846843
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 19,
+  "road_name": "Hospital Road (First Section)",
+  "start_node_id": 3,
+  "end_node_id": 7,
+  "length_m": 776.7,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 186,
+  "geometry": [
+   [
+    18.52945,
+    73.853612
+   ],
+   [
+    18.525956,
+    73.854033
+   ],
+   [
+    18.522494,
+    73.854258
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 20,
+  "road_name": "Hospital Road (Second Section)",
+  "start_node_id": 7,
+  "end_node_id": 11,
+  "length_m": 680.9,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 163,
+  "geometry": [
+   [
+    18.522494,
+    73.854258
+   ],
+   [
+    18.519217,
+    73.853832
+   ],
+   [
+    18.516467,
+    73.853165
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 21,
+  "road_name": "Hospital Road (Third Section)",
+  "start_node_id": 11,
+  "end_node_id": 15,
+  "length_m": 885.8,
+  "lanes": 2,
+  "speed_limit_kmh": 40.0,
+  "road_type": "collector",
+  "capacity": 213,
+  "geometry": [
+   [
+    18.516467,
+    73.853165
+   ],
+   [
+    18.512598,
+    73.853835
+   ],
+   [
+    18.508553,
+    73.853914
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 22,
+  "road_name": "Eastern Bypass (First Section)",
+  "start_node_id": 4,
+  "end_node_id": 8,
+  "length_m": 747.7,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 269,
+  "geometry": [
+   [
+    18.528781,
+    73.86121
+   ],
+   [
+    18.52562,
+    73.860882
+   ],
+   [
+    18.522073,
+    73.860813
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 23,
+  "road_name": "Eastern Bypass (Second Section)",
+  "start_node_id": 8,
+  "end_node_id": 12,
+  "length_m": 642.1,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 231,
+  "geometry": [
+   [
+    18.522073,
+    73.860813
+   ],
+   [
+    18.519119,
+    73.86096
+   ],
+   [
+    18.516302,
+    73.860905
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 24,
+  "road_name": "Eastern Bypass (Third Section)",
+  "start_node_id": 12,
+  "end_node_id": 16,
+  "length_m": 790.5,
+  "lanes": 3,
+  "speed_limit_kmh": 60.0,
+  "road_type": "arterial",
+  "capacity": 285,
+  "geometry": [
+   [
+    18.516302,
+    73.860905
+   ],
+   [
+    18.512462,
+    73.86094
+   ],
+   [
+    18.509194,
+    73.861021
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 25,
+  "road_name": "Old Town Link",
+  "start_node_id": 1,
+  "end_node_id": 6,
+  "length_m": 1110.1,
+  "lanes": 1,
+  "speed_limit_kmh": 30.0,
+  "road_type": "local",
+  "capacity": 133,
+  "geometry": [
+   [
+    18.529153,
+    73.838511
+   ],
+   [
+    18.525376,
+    73.841939
+   ],
+   [
+    18.521998,
+    73.845827
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 26,
+  "road_name": "Stadium Link",
+  "start_node_id": 7,
+  "end_node_id": 12,
+  "length_m": 982.6,
+  "lanes": 1,
+  "speed_limit_kmh": 30.0,
+  "road_type": "local",
+  "capacity": 118,
+  "geometry": [
+   [
+    18.522494,
+    73.854258
+   ],
+   [
+    18.519133,
+    73.857742
+   ],
+   [
+    18.516302,
+    73.860905
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 27,
+  "road_name": "Harbour Link",
+  "start_node_id": 9,
+  "end_node_id": 14,
+  "length_m": 1109.7,
+  "lanes": 1,
+  "speed_limit_kmh": 30.0,
+  "road_type": "local",
+  "capacity": 133,
+  "geometry": [
+   [
+    18.515978,
+    73.839627
+   ],
+   [
+    18.512133,
+    73.843084
+   ],
+   [
+    18.508732,
+    73.846843
+   ]
+  ],
+  "is_closed": false
+ },
+ {
+  "id": 28,
+  "road_name": "Industrial Link",
+  "start_node_id": 10,
+  "end_node_id": 15,
+  "length_m": 1149.6,
+  "lanes": 1,
+  "speed_limit_kmh": 30.0,
+  "road_type": "local",
+  "capacity": 138,
+  "geometry": [
+   [
+    18.515908,
+    73.846255
+   ],
+   [
+    18.512165,
+    73.850307
+   ],
+   [
+    18.508553,
+    73.853914
+   ]
+  ],
+  "is_closed": false
+ }
+]

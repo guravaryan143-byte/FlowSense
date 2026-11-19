@@ -1,0 +1,175 @@
+{
+ "items": [
+  {
+   "recorded_at": "2026-11-16T03:30:00Z",
+   "vehicle_count": 21,
+   "average_speed": 54.6,
+   "density": 7.75,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T03:45:00Z",
+   "vehicle_count": 21,
+   "average_speed": 55.6,
+   "density": 7.77,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T04:00:00Z",
+   "vehicle_count": 21,
+   "average_speed": 21.9,
+   "density": 7.89,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T04:15:00Z",
+   "vehicle_count": 22,
+   "average_speed": 22.2,
+   "density": 8.05,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T04:30:00Z",
+   "vehicle_count": 22,
+   "average_speed": 21.9,
+   "density": 8.14,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T04:45:00Z",
+   "vehicle_count": 23,
+   "average_speed": 22.7,
+   "density": 8.79,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T05:00:00Z",
+   "vehicle_count": 24,
+   "average_speed": 54.2,
+   "density": 8.85,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T05:15:00Z",
+   "vehicle_count": 27,
+   "average_speed": 53.7,
+   "density": 9.92,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T05:30:00Z",
+   "vehicle_count": 30,
+   "average_speed": 53.8,
+   "density": 11.07,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T05:45:00Z",
+   "vehicle_count": 31,
+   "average_speed": 52.2,
+   "density": 11.66,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T06:00:00Z",
+   "vehicle_count": 35,
+   "average_speed": 50.1,
+   "density": 13.22,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T06:15:00Z",
+   "vehicle_count": 42,
+   "average_speed": 51.6,
+   "density": 15.55,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T06:30:00Z",
+   "vehicle_count": 49,
+   "average_speed": 47.4,
+   "density": 18.19,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T06:45:00Z",
+   "vehicle_count": 59,
+   "average_speed": 47.2,
+   "density": 22.06,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T07:00:00Z",
+   "vehicle_count": 67,
+   "average_speed": 46.0,
+   "density": 25.06,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T07:15:00Z",
+   "vehicle_count": 78,
+   "average_speed": 47.5,
+   "density": 29.22,
+   "congestion_level": "free_flow"
+  },
+  {
+   "recorded_at": "2026-11-16T07:30:00Z",
+   "vehicle_count": 88,
+   "average_speed": 42.7,
+   "density": 32.92,
+   "congestion_level": "moderate"
+  },
+  {
+   "recorded_at": "2026-11-16T07:45:00Z",
+   "vehicle_count": 94,
+   "average_speed": 42.0,
+   "density": 35.34,
+   "congestion_level": "moderate"
+  },
+  {
+   "recorded_at": "2026-11-16T08:00:00Z",
+   "vehicle_count": 108,
+   "average_speed": 39.1,
+   "density": 40.33,
+   "congestion_level": "moderate"
+  },
+  {
+   "recorded_at": "2026-11-16T08:15:00Z",
+   "vehicle_count": 115,
+   "average_speed": 37.8,
+   "density": 42.98,
+   "congestion_level": "moderate"
+  },
+  {
+   "recorded_at": "2026-11-16T08:30:00Z",
+   "vehicle_count": 122,
+   "average_speed": 36.3,
+   "density": 45.83,
+   "congestion_level": "moderate"
+  },
+  {
+   "recorded_at": "2026-11-16T08:45:00Z",
+   "vehicle_count": 124,
+   "average_speed": 37.9,
+   "density": 46.28,
+   "congestion_level": "moderate"
+  },
+  {
+   "recorded_at": "2026-11-16T09:00:00Z",
+   "vehicle_count": 119,
+   "average_speed": 39.7,
+   "density": 44.38,
+   "congestion_level": "moderate"
+  },
+  {
+   "recorded_at": "2026-11-16T09:15:00Z",
+   "vehicle_count": 123,
+   "average_speed": 36.5,
+   "density": 45.89,
+   "congestion_level": "moderate"
+  }
+ ],
+ "total": 24,
+ "limit": 500,
+ "offset": 0
+}

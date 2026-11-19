@@ -1,0 +1,22 @@
+# secrets
+.env
+.env.*
+!.env.example
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+# generated data and models
+datasets/*.csv
+backend/app/ml/artifacts/*.joblib
+backend/app/ml/artifacts/metrics.json
+backend/flowsense_dev.db
+# node
+node_modules/
+frontend/dist/
+# os/editor
+.DS_Store
+.idea/
+.vscode/

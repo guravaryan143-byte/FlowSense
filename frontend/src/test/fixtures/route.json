@@ -1,0 +1,279 @@
+{
+ "id": 34,
+ "status": "active",
+ "vehicle_id": null,
+ "vehicle_type": "ambulance",
+ "origin_intersection_id": 1,
+ "destination_intersection_id": 15,
+ "algorithm": "astar",
+ "objective": "fastest",
+ "route": {
+  "nodes": [
+   {
+    "id": 1,
+    "name": "Northgate Circle",
+    "lat": 18.529153,
+    "lon": 73.838511
+   },
+   {
+    "id": 5,
+    "name": "University Gate",
+    "lat": 18.521952,
+    "lon": 73.838907
+   },
+   {
+    "id": 9,
+    "name": "Riverside Junction",
+    "lat": 18.515978,
+    "lon": 73.839627
+   },
+   {
+    "id": 13,
+    "name": "Southgate Circle",
+    "lat": 18.508502,
+    "lon": 73.838465
+   },
+   {
+    "id": 14,
+    "name": "Harbour Cross",
+    "lat": 18.508732,
+    "lon": 73.846843
+   },
+   {
+    "id": 15,
+    "name": "Industrial Junction",
+    "lat": 18.508553,
+    "lon": 73.853914
+   }
+  ],
+  "roads": [
+   {
+    "id": 13,
+    "name": "Western Expressway (First Section)",
+    "length_m": 802.0,
+    "time_s": 63.3,
+    "congestion_level": "moderate"
+   },
+   {
+    "id": 14,
+    "name": "Western Expressway (Second Section)",
+    "length_m": 668.7,
+    "time_s": 62.6,
+    "congestion_level": "heavy"
+   },
+   {
+    "id": 15,
+    "name": "Western Expressway (Third Section)",
+    "length_m": 840.8,
+    "time_s": 61.6,
+    "congestion_level": "moderate"
+   },
+   {
+    "id": 10,
+    "name": "Ring Road South (First Section)",
+    "length_m": 886.2,
+    "time_s": 63.2,
+    "congestion_level": "moderate"
+   },
+   {
+    "id": 11,
+    "name": "Ring Road South (Second Section)",
+    "length_m": 745.9,
+    "time_s": 61.6,
+    "congestion_level": "moderate"
+   }
+  ],
+  "geometry": [
+   [
+    18.529153,
+    73.838511
+   ],
+   [
+    18.525276,
+    73.83881
+   ],
+   [
+    18.521952,
+    73.838907
+   ],
+   [
+    18.519124,
+    73.839311
+   ],
+   [
+    18.515978,
+    73.839627
+   ],
+   [
+    18.512465,
+    73.838934
+   ],
+   [
+    18.508502,
+    73.838465
+   ],
+   [
+    18.508905,
+    73.842425
+   ],
+   [
+    18.508732,
+    73.846843
+   ],
+   [
+    18.508593,
+    73.850533
+   ],
+   [
+    18.508553,
+    73.853914
+   ]
+  ],
+  "distance_m": 3943.6,
+  "time_s": 312.2,
+  "nodes_expanded": 11,
+  "algorithm": "astar",
+  "objective": "time"
+ },
+ "alternative": {
+  "nodes": [
+   {
+    "id": 1,
+    "name": "Northgate Circle",
+    "lat": 18.529153,
+    "lon": 73.838511
+   },
+   {
+    "id": 2,
+    "name": "Market Square",
+    "lat": 18.529611,
+    "lon": 73.845801
+   },
+   {
+    "id": 3,
+    "name": "Civic Centre",
+    "lat": 18.52945,
+    "lon": 73.853612
+   },
+   {
+    "id": 7,
+    "name": "Central Station",
+    "lat": 18.522494,
+    "lon": 73.854258
+   },
+   {
+    "id": 11,
+    "name": "City Hospital Junction",
+    "lat": 18.516467,
+    "lon": 73.853165
+   },
+   {
+    "id": 15,
+    "name": "Industrial Junction",
+    "lat": 18.508553,
+    "lon": 73.853914
+   }
+  ],
+  "roads": [
+   {
+    "id": 1,
+    "name": "Ring Road North (First Section)",
+    "length_m": 770.3,
+    "time_s": 58.5,
+    "congestion_level": "moderate"
+   },
+   {
+    "id": 2,
+    "name": "Ring Road North (Second Section)",
+    "length_m": 825.9,
+    "time_s": 62.6,
+    "congestion_level": "moderate"
+   },
+   {
+    "id": 19,
+    "name": "Hospital Road (First Section)",
+    "length_m": 776.7,
+    "time_s": 95.4,
+    "congestion_level": "moderate"
+   },
+   {
+    "id": 20,
+    "name": "Hospital Road (Second Section)",
+    "length_m": 680.9,
+    "time_s": 95.1,
+    "congestion_level": "heavy"
+   },
+   {
+    "id": 21,
+    "name": "Hospital Road (Third Section)",
+    "length_m": 885.8,
+    "time_s": 98.4,
+    "congestion_level": "moderate"
+   }
+  ],
+  "geometry": [
+   [
+    18.529153,
+    73.838511
+   ],
+   [
+    18.529411,
+    73.841894
+   ],
+   [
+    18.529611,
+    73.845801
+   ],
+   [
+    18.529266,
+    73.84953
+   ],
+   [
+    18.52945,
+    73.853612
+   ],
+   [
+    18.525956,
+    73.854033
+   ],
+   [
+    18.522494,
+    73.854258
+   ],
+   [
+    18.519217,
+    73.853832
+   ],
+   [
+    18.516467,
+    73.853165
+   ],
+   [
+    18.512598,
+    73.853835
+   ],
+   [
+    18.508553,
+    73.853914
+   ]
+  ],
+  "distance_m": 3939.6,
+  "time_s": 410.0,
+  "nodes_expanded": 14,
+  "algorithm": "astar",
+  "objective": "time"
+ },
+ "comparison": {
+  "fastest_time_s": 312.2,
+  "fastest_distance_m": 3943.6,
+  "shortest_time_s": 429.1,
+  "shortest_distance_m": 2938.4,
+  "same_route": false,
+  "time_saved_by_fastest_s": 116.9
+ },
+ "reroute_count": 0,
+ "note": null,
+ "data_source": "simulated",
+ "created_at": "2026-11-16T09:28:51.868984Z",
+ "updated_at": "2026-11-16T09:28:51.868986Z"
+}

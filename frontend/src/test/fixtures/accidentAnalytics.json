@@ -1,0 +1,147 @@
+{
+ "total": 700,
+ "by_severity": {
+  "low": 247,
+  "medium": 276,
+  "high": 127,
+  "critical": 50
+ },
+ "by_type": {
+  "pedestrian": 124,
+  "rear_end": 118,
+  "side_impact": 110,
+  "two_wheeler": 110,
+  "sideswipe": 96,
+  "head_on": 76,
+  "single_vehicle": 66
+ },
+ "by_hour": [
+  6,
+  11,
+  7,
+  7,
+  13,
+  10,
+  24,
+  42,
+  48,
+  42,
+  41,
+  29,
+  34,
+  34,
+  34,
+  42,
+  49,
+  50,
+  49,
+  47,
+  32,
+  24,
+  12,
+  13
+ ],
+ "by_month": [
+  {
+   "month": "2024-11",
+   "count": 14
+  },
+  {
+   "month": "2024-12",
+   "count": 24
+  },
+  {
+   "month": "2025-01",
+   "count": 32
+  },
+  {
+   "month": "2025-02",
+   "count": 30
+  },
+  {
+   "month": "2025-03",
+   "count": 29
+  },
+  {
+   "month": "2025-04",
+   "count": 22
+  },
+  {
+   "month": "2025-05",
+   "count": 29
+  },
+  {
+   "month": "2025-06",
+   "count": 23
+  },
+  {
+   "month": "2025-07",
+   "count": 27
+  },
+  {
+   "month": "2025-08",
+   "count": 35
+  },
+  {
+   "month": "2025-09",
+   "count": 16
+  },
+  {
+   "month": "2025-10",
+   "count": 26
+  },
+  {
+   "month": "2025-11",
+   "count": 31
+  },
+  {
+   "month": "2025-12",
+   "count": 30
+  },
+  {
+   "month": "2026-01",
+   "count": 41
+  },
+  {
+   "month": "2026-02",
+   "count": 22
+  },
+  {
+   "month": "2026-03",
+   "count": 29
+  },
+  {
+   "month": "2026-04",
+   "count": 28
+  },
+  {
+   "month": "2026-05",
+   "count": 33
+  },
+  {
+   "month": "2026-06",
+   "count": 27
+  },
+  {
+   "month": "2026-07",
+   "count": 27
+  },
+  {
+   "month": "2026-08",
+   "count": 44
+  },
+  {
+   "month": "2026-09",
+   "count": 40
+  },
+  {
+   "month": "2026-10",
+   "count": 28
+  },
+  {
+   "month": "2026-11",
+   "count": 13
+  }
+ ],
+ "data_source": "simulated"
+}

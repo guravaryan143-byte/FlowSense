@@ -1,0 +1,207 @@
+{
+ "items": [
+  {
+   "id": 182,
+   "road_id": 3,
+   "accident_type": "rear_end",
+   "severity": "high",
+   "latitude": 18.529334,
+   "longitude": 73.860952,
+   "occurred_at": "2026-11-13T19:14:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 494,
+   "road_id": 26,
+   "accident_type": "two_wheeler",
+   "severity": "low",
+   "latitude": 18.516557,
+   "longitude": 73.860638,
+   "occurred_at": "2026-11-13T08:30:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 337,
+   "road_id": 17,
+   "accident_type": "single_vehicle",
+   "severity": "low",
+   "latitude": 18.522046,
+   "longitude": 73.845831,
+   "occurred_at": "2026-11-12T15:12:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 81,
+   "road_id": 3,
+   "accident_type": "sideswipe",
+   "severity": "low",
+   "latitude": 18.528802,
+   "longitude": 73.860942,
+   "occurred_at": "2026-11-10T08:20:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 262,
+   "road_id": 12,
+   "accident_type": "pedestrian",
+   "severity": "low",
+   "latitude": 18.508467,
+   "longitude": 73.857565,
+   "occurred_at": "2026-11-09T15:03:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 424,
+   "road_id": 1,
+   "accident_type": "sideswipe",
+   "severity": "high",
+   "latitude": 18.52969,
+   "longitude": 73.845818,
+   "occurred_at": "2026-11-08T10:54:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 376,
+   "road_id": 17,
+   "accident_type": "side_impact",
+   "severity": "medium",
+   "latitude": 18.521637,
+   "longitude": 73.845995,
+   "occurred_at": "2026-11-08T07:15:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 443,
+   "road_id": 24,
+   "accident_type": "single_vehicle",
+   "severity": "low",
+   "latitude": 18.512081,
+   "longitude": 73.86138,
+   "occurred_at": "2026-11-07T10:50:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 588,
+   "road_id": 1,
+   "accident_type": "pedestrian",
+   "severity": "high",
+   "latitude": 18.529342,
+   "longitude": 73.839585,
+   "occurred_at": "2026-11-06T14:37:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 283,
+   "road_id": 12,
+   "accident_type": "side_impact",
+   "severity": "medium",
+   "latitude": 18.508748,
+   "longitude": 73.857022,
+   "occurred_at": "2026-11-05T19:30:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 531,
+   "road_id": 28,
+   "accident_type": "side_impact",
+   "severity": "low",
+   "latitude": 18.512939,
+   "longitude": 73.849728,
+   "occurred_at": "2026-11-02T17:31:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 475,
+   "road_id": 28,
+   "accident_type": "rear_end",
+   "severity": "medium",
+   "latitude": 18.510057,
+   "longitude": 73.852242,
+   "occurred_at": "2026-11-02T12:28:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 388,
+   "road_id": 3,
+   "accident_type": "rear_end",
+   "severity": "low",
+   "latitude": 18.529145,
+   "longitude": 73.861216,
+   "occurred_at": "2026-11-01T20:02:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 26,
+   "road_id": 17,
+   "accident_type": "side_impact",
+   "severity": "medium",
+   "latitude": 18.521744,
+   "longitude": 73.845807,
+   "occurred_at": "2026-10-31T17:46:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 57,
+   "road_id": 21,
+   "accident_type": "two_wheeler",
+   "severity": "critical",
+   "latitude": 18.511591,
+   "longitude": 73.854004,
+   "occurred_at": "2026-10-30T16:39:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 507,
+   "road_id": 23,
+   "accident_type": "sideswipe",
+   "severity": "low",
+   "latitude": 18.519526,
+   "longitude": 73.860852,
+   "occurred_at": "2026-10-29T20:05:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 455,
+   "road_id": 28,
+   "accident_type": "side_impact",
+   "severity": "medium",
+   "latitude": 18.510748,
+   "longitude": 73.851599,
+   "occurred_at": "2026-10-29T04:06:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 557,
+   "road_id": 12,
+   "accident_type": "rear_end",
+   "severity": "low",
+   "latitude": 18.508924,
+   "longitude": 73.858638,
+   "occurred_at": "2026-10-26T16:26:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 619,
+   "road_id": 26,
+   "accident_type": "side_impact",
+   "severity": "critical",
+   "latitude": 18.52186,
+   "longitude": 73.855302,
+   "occurred_at": "2026-10-26T13:08:00Z",
+   "data_source": "simulated"
+  },
+  {
+   "id": 452,
+   "road_id": 1,
+   "accident_type": "single_vehicle",
+   "severity": "medium",
+   "latitude": 18.529444,
+   "longitude": 73.840441,
+   "occurred_at": "2026-10-25T12:37:00Z",
+   "data_source": "simulated"
+  }
+ ],
+ "total": 700,
+ "limit": 20,
+ "offset": 0
+}

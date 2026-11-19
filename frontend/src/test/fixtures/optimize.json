@@ -1,0 +1,216 @@
+{
+ "run_id": 34,
+ "intersection_id": 7,
+ "intersection_name": "Central Station",
+ "scenario": "shifting",
+ "duration_s": 900,
+ "seed": 42,
+ "applied": false,
+ "approaches": [
+  {
+   "road_id": 5,
+   "road_name": "Central Avenue (Second Section)",
+   "phase": "EW",
+   "vehicle_count": 123,
+   "occupancy": 0.3832,
+   "estimated_queue": 38.7,
+   "is_closed": false
+  },
+  {
+   "road_id": 6,
+   "road_name": "Central Avenue (Third Section)",
+   "phase": "EW",
+   "vehicle_count": 113,
+   "occupancy": 0.452,
+   "estimated_queue": 44.2,
+   "is_closed": false
+  },
+  {
+   "road_id": 19,
+   "road_name": "Hospital Road (First Section)",
+   "phase": "NS",
+   "vehicle_count": 85,
+   "occupancy": 0.457,
+   "estimated_queue": 33.7,
+   "is_closed": false
+  },
+  {
+   "road_id": 20,
+   "road_name": "Hospital Road (Second Section)",
+   "phase": "NS",
+   "vehicle_count": 84,
+   "occupancy": 0.5153,
+   "estimated_queue": 38.8,
+   "is_closed": false
+  },
+  {
+   "road_id": 26,
+   "road_name": "Stadium Link",
+   "phase": "NS",
+   "vehicle_count": 43,
+   "occupancy": 0.3644,
+   "estimated_queue": 12.6,
+   "is_closed": false
+  }
+ ],
+ "fixed_timing": {
+  "ns_green_s": 41.0,
+  "ew_green_s": 41.0,
+  "cycle_s": 90.0
+ },
+ "adaptive_timing": {
+  "ns_green_s": 41.5,
+  "ew_green_s": 40.5,
+  "cycle_s": 90.0
+ },
+ "fixed": {
+  "strategy": "fixed",
+  "avg_wait_s": 104.63,
+  "throughput": 1193,
+  "avg_queue": 181.82,
+  "max_queue": 371,
+  "final_queue": 371,
+  "vehicles_arrived": 1564,
+  "queue_series": [
+   {
+    "t": 0.0,
+    "queue": 85.0
+   },
+   {
+    "t": 60.0,
+    "queue": 91.0
+   },
+   {
+    "t": 120.0,
+    "queue": 66.0
+   },
+   {
+    "t": 180.0,
+    "queue": 87.0
+   },
+   {
+    "t": 240.0,
+    "queue": 86.0
+   },
+   {
+    "t": 300.0,
+    "queue": 117.0
+   },
+   {
+    "t": 360.0,
+    "queue": 143.0
+   },
+   {
+    "t": 420.0,
+    "queue": 134.0
+   },
+   {
+    "t": 480.0,
+    "queue": 190.0
+   },
+   {
+    "t": 540.0,
+    "queue": 204.0
+   },
+   {
+    "t": 600.0,
+    "queue": 226.0
+   },
+   {
+    "t": 660.0,
+    "queue": 251.0
+   },
+   {
+    "t": 720.0,
+    "queue": 267.0
+   },
+   {
+    "t": 780.0,
+    "queue": 320.0
+   },
+   {
+    "t": 840.0,
+    "queue": 344.0
+   }
+  ]
+ },
+ "adaptive": {
+  "strategy": "adaptive",
+  "avg_wait_s": 81.09,
+  "throughput": 1305,
+  "avg_queue": 140.92,
+  "max_queue": 259,
+  "final_queue": 259,
+  "vehicles_arrived": 1564,
+  "queue_series": [
+   {
+    "t": 0.0,
+    "queue": 85.0
+   },
+   {
+    "t": 60.0,
+    "queue": 91.0
+   },
+   {
+    "t": 120.0,
+    "queue": 67.0
+   },
+   {
+    "t": 180.0,
+    "queue": 84.0
+   },
+   {
+    "t": 240.0,
+    "queue": 99.0
+   },
+   {
+    "t": 300.0,
+    "queue": 104.0
+   },
+   {
+    "t": 360.0,
+    "queue": 105.0
+   },
+   {
+    "t": 420.0,
+    "queue": 108.0
+   },
+   {
+    "t": 480.0,
+    "queue": 135.0
+   },
+   {
+    "t": 540.0,
+    "queue": 167.0
+   },
+   {
+    "t": 600.0,
+    "queue": 169.0
+   },
+   {
+    "t": 660.0,
+    "queue": 194.0
+   },
+   {
+    "t": 720.0,
+    "queue": 193.0
+   },
+   {
+    "t": 780.0,
+    "queue": 225.0
+   },
+   {
+    "t": 840.0,
+    "queue": 250.0
+   }
+  ]
+ },
+ "improvement": {
+  "wait_reduction_pct": 22.5,
+  "queue_reduction_pct": 22.5,
+  "throughput_change_pct": 9.4,
+  "verdict": "Adaptive timing reduced average waiting time by 22.5% in this simulation."
+ },
+ "notice": "Results come from a simulated intersection fed with identical random arrivals (same seed) under both strategies. Arrival rates are derived from SIMULATED city traffic; they are not real measurements.",
+ "created_at": "2026-11-16T09:28:51.852404Z"
+}

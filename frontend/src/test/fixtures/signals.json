@@ -1,0 +1,498 @@
+[
+ {
+  "intersection_id": 1,
+  "intersection_name": "Northgate Circle",
+  "latitude": 18.529153,
+  "longitude": 73.838511,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 48.6,
+   "ew_green_s": 33.4,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 101.5,
+  "pressure": {
+   "NS": 60.4,
+   "EW": 41.1
+  },
+  "updated_at": "2026-11-16T09:28:31.835247Z"
+ },
+ {
+  "intersection_id": 2,
+  "intersection_name": "Market Square",
+  "latitude": 18.529611,
+  "longitude": 73.845801,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 25.4,
+   "ew_green_s": 56.6,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 117.7,
+  "pressure": {
+   "NS": 36.1,
+   "EW": 81.6
+  },
+  "updated_at": "2026-11-16T09:28:31.835249Z"
+ },
+ {
+  "intersection_id": 3,
+  "intersection_name": "Civic Centre",
+  "latitude": 18.52945,
+  "longitude": 73.853612,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 25.1,
+   "ew_green_s": 56.9,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 111.3,
+  "pressure": {
+   "NS": 33.7,
+   "EW": 77.6
+  },
+  "updated_at": "2026-11-16T09:28:31.835250Z"
+ },
+ {
+  "intersection_id": 4,
+  "intersection_name": "Lakeside Junction",
+  "latitude": 18.528781,
+  "longitude": 73.86121,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 42.2,
+   "ew_green_s": 39.8,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 76.5,
+  "pressure": {
+   "NS": 39.4,
+   "EW": 37.1
+  },
+  "updated_at": "2026-11-16T09:28:31.835250Z"
+ },
+ {
+  "intersection_id": 5,
+  "intersection_name": "University Gate",
+  "latitude": 18.521952,
+  "longitude": 73.838907,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 55.1,
+   "ew_green_s": 26.9,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 145.6,
+  "pressure": {
+   "NS": 98.1,
+   "EW": 47.5
+  },
+  "updated_at": "2026-11-16T09:28:31.835251Z"
+ },
+ {
+  "intersection_id": 6,
+  "intersection_name": "Old Town Cross",
+  "latitude": 18.521998,
+  "longitude": 73.845827,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 35.4,
+   "ew_green_s": 46.6,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 183.7,
+  "pressure": {
+   "NS": 79.1,
+   "EW": 104.6
+  },
+  "updated_at": "2026-11-16T09:28:31.835252Z"
+ },
+ {
+  "intersection_id": 7,
+  "intersection_name": "Central Station",
+  "latitude": 18.522494,
+  "longitude": 73.854258,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 41.5,
+   "ew_green_s": 40.5,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 168.0,
+  "pressure": {
+   "NS": 85.1,
+   "EW": 82.9
+  },
+  "updated_at": "2026-11-16T09:28:31.835252Z"
+ },
+ {
+  "intersection_id": 8,
+  "intersection_name": "Tech Park Junction",
+  "latitude": 18.522073,
+  "longitude": 73.860813,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 60.0,
+   "ew_green_s": 22.0,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 304.2,
+  "pressure": {
+   "NS": 260.0,
+   "EW": 44.2
+  },
+  "updated_at": "2026-11-16T09:28:31.835252Z"
+ },
+ {
+  "intersection_id": 9,
+  "intersection_name": "Riverside Junction",
+  "latitude": 18.515978,
+  "longitude": 73.839627,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 60.0,
+   "ew_green_s": 22.0,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 144.7,
+  "pressure": {
+   "NS": 106.4,
+   "EW": 38.3
+  },
+  "updated_at": "2026-11-16T09:28:31.835253Z"
+ },
+ {
+  "intersection_id": 10,
+  "intersection_name": "Courthouse Square",
+  "latitude": 18.515908,
+  "longitude": 73.846255,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 37.8,
+   "ew_green_s": 44.2,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 163.1,
+  "pressure": {
+   "NS": 75.2,
+   "EW": 87.9
+  },
+  "updated_at": "2026-11-16T09:28:31.835253Z"
+ },
+ {
+  "intersection_id": 11,
+  "intersection_name": "City Hospital Junction",
+  "latitude": 18.516467,
+  "longitude": 73.853165,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 42.0,
+   "ew_green_s": 40.0,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 130.8,
+  "pressure": {
+   "NS": 67.0,
+   "EW": 63.8
+  },
+  "updated_at": "2026-11-16T09:28:31.835254Z"
+ },
+ {
+  "intersection_id": 12,
+  "intersection_name": "Stadium Circle",
+  "latitude": 18.516302,
+  "longitude": 73.860905,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 60.0,
+   "ew_green_s": 22.0,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 298.6,
+  "pressure": {
+   "NS": 258.6,
+   "EW": 40.0
+  },
+  "updated_at": "2026-11-16T09:28:31.835254Z"
+ },
+ {
+  "intersection_id": 13,
+  "intersection_name": "Southgate Circle",
+  "latitude": 18.508502,
+  "longitude": 73.838465,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 40.0,
+   "ew_green_s": 42.0,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 73.3,
+  "pressure": {
+   "NS": 35.7,
+   "EW": 37.6
+  },
+  "updated_at": "2026-11-16T09:28:31.835255Z"
+ },
+ {
+  "intersection_id": 14,
+  "intersection_name": "Harbour Cross",
+  "latitude": 18.508732,
+  "longitude": 73.846843,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 22.0,
+   "ew_green_s": 60.0,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 129.7,
+  "pressure": {
+   "NS": 32.2,
+   "EW": 97.5
+  },
+  "updated_at": "2026-11-16T09:28:31.835255Z"
+ },
+ {
+  "intersection_id": 15,
+  "intersection_name": "Industrial Junction",
+  "latitude": 18.508553,
+  "longitude": 73.853914,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 26.6,
+   "ew_green_s": 55.4,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 128.8,
+  "pressure": {
+   "NS": 41.4,
+   "EW": 87.4
+  },
+  "updated_at": "2026-11-16T09:28:31.835256Z"
+ },
+ {
+  "intersection_id": 16,
+  "intersection_name": "Airport Link Junction",
+  "latitude": 18.509194,
+  "longitude": 73.861021,
+  "current_phase": "NS",
+  "green_duration": 41.0,
+  "mode": "fixed",
+  "status": "operational",
+  "current": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "fixed_baseline": {
+   "ns_green_s": 41.0,
+   "ew_green_s": 41.0,
+   "cycle_s": 90.0
+  },
+  "recommended": {
+   "ns_green_s": 39.0,
+   "ew_green_s": 43.0,
+   "cycle_s": 90.0
+  },
+  "total_estimated_queue": 80.1,
+  "pressure": {
+   "NS": 38.0,
+   "EW": 42.1
+  },
+  "updated_at": "2026-11-16T09:28:31.835256Z"
+ }
+]

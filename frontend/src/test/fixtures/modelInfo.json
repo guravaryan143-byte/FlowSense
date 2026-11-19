@@ -1,0 +1,79 @@
+{
+ "available": true,
+ "message": null,
+ "info": {
+  "version": "rf-20261115095909",
+  "trained_at": "2026-11-15T09:59:09.920548+00:00",
+  "horizon_minutes": 30,
+  "step_minutes": 15,
+  "n_train": 60116,
+  "n_test": 15064,
+  "split_time": "2026-10-26T09:15:00+00:00",
+  "data_source": "simulated",
+  "n_estimators": 100,
+  "metrics": {
+   "random_forest": {
+    "target_density": {
+     "mae": 0.9718,
+     "rmse": 2.7141,
+     "r2": 0.9833
+    },
+    "target_speed": {
+     "mae": 1.2055,
+     "rmse": 2.2331,
+     "r2": 0.9686
+    }
+   },
+   "baseline_persistence": {
+    "target_density": {
+     "mae": 3.4569,
+     "rmse": 7.3429,
+     "r2": 0.878
+    },
+    "target_speed": {
+     "mae": 2.1524,
+     "rmse": 3.4796,
+     "r2": 0.9237
+    }
+   },
+   "baseline_historical_mean": {
+    "target_density": {
+     "mae": 3.023,
+     "rmse": 8.5913,
+     "r2": 0.833
+    },
+    "target_speed": {
+     "mae": 1.8929,
+     "rmse": 3.6341,
+     "r2": 0.9168
+    }
+   }
+  },
+  "density_mae_improvement_vs_persistence_pct": 71.9,
+  "feature_importances": {
+   "occupancy": 0.6269,
+   "average_speed": 0.1614,
+   "density": 0.1184,
+   "occ_trend": 0.0391,
+   "target_hour_cos": 0.0135,
+   "length_m": 0.0073,
+   "occ_lag4": 0.006,
+   "capacity": 0.0053,
+   "speed_limit_kmh": 0.0047,
+   "target_hour_sin": 0.0043,
+   "lanes": 0.0043,
+   "road_type_code": 0.0033,
+   "occ_roll4": 0.0013,
+   "speed_ratio": 0.0013,
+   "vehicle_count": 0.0012,
+   "speed_lag1": 0.0005,
+   "occ_lag1": 0.0005,
+   "target_dow": 0.0004,
+   "target_is_weekend": 0.0003
+  },
+  "units": {
+   "density": "vehicles/km/lane",
+   "speed": "km/h"
+  }
+ }
+}

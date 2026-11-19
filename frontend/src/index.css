@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { @apply bg-ink-900 text-slate-200 antialiased; font-feature-settings: "cv02", "cv03", "cv04", "cv11"; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #25345a; border-radius: 8px; border: 2px solid #0b1220; }
+::-webkit-scrollbar-track { background: transparent; }
+:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
+
+/* Leaflet: dark-tinted OpenStreetMap tiles (the free OSM raster tiles, recoloured with a CSS filter) */
+.leaflet-container { background: #0b1220; font-family: inherit; }
+.leaflet-tile-pane { filter: invert(1) hue-rotate(195deg) brightness(0.62) contrast(0.95) saturate(0.45); }
+.leaflet-control-attribution { background: rgba(11, 18, 32, 0.8) !important; color: #8b9ab5 !important; }
+.leaflet-control-attribution a { color: #22d3ee !important; }
+.leaflet-control-zoom a { background: #131e38 !important; color: #e2e8f0 !important; border-color: #1f2d4b !important; }
+.leaflet-tooltip { background: #0f1830; color: #e2e8f0; border: 1px solid #25345a; box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+.leaflet-tooltip-top:before { border-top-color: #25345a; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #0f1830; color: #e2e8f0; border: 1px solid #25345a; }
+.hotspot-label { background: #ef4444; color: white; border: 0; font-weight: 700; padding: 1px 6px; }
+
+@keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.fade-in { animation: fade-in .25s ease-out both; }
+@media (prefers-reduced-motion: reduce) { .fade-in { animation: none; } * { scroll-behavior: auto !important; } }
+
+/* ---------------------------------------------------------------- landing: hero motion ---- */
+/* Both hero layers run the SAME push-in, so the revealed layer stays registered with the street layer. */
+.hero-zoom { transform-origin: 62% 50%; animation: hero-push 9s cubic-bezier(.16, .84, .3, 1) both; will-change: transform; }
+@keyframes hero-push { from { transform: scale(1.09); } to { transform: scale(1); } }
+
+/* The signal layer is invisible until the spotlight script has installed its mask (no flash of the full layer). */
+.reveal-layer { opacity: 0; transition: opacity .5s ease; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.reveal-layer[data-ready="true"] { opacity: 1; }
+
+/* One orchestrated page-load sequence for the hero copy (delay set per element via --d, in ms). */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+.rise { animation: rise .9s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--d, 0) * 1ms); }
+
+/* Mobile menu: stays mounted so it can transition; visibility removes it from tab order and the a11y tree when shut. */
+.menu-sheet { visibility: hidden; opacity: 0; transform: translateY(-8px); transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s; }
+.menu-sheet[data-open="true"] { visibility: visible; opacity: 1; transform: none; transition: opacity .25s ease, transform .25s ease, visibility 0s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom, .rise { animation: none; }
+  .reveal-layer, .menu-sheet, .menu-sheet[data-open="true"] { transition: none; }
+}

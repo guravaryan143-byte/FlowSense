@@ -1,0 +1,54 @@
+{
+ "data_source": "simulated",
+ "as_of": "2026-11-16T09:15:00Z",
+ "roads_total": 28,
+ "roads_closed": 0,
+ "total_vehicles": 2835,
+ "average_speed": 27.0,
+ "average_density": 53.77,
+ "congested_roads": 5,
+ "congestion_distribution": {
+  "free_flow": 0,
+  "moderate": 23,
+  "heavy": 4,
+  "severe": 1,
+  "closed": 0
+ },
+ "active_incidents": 3,
+ "prediction": {
+  "model_available": true,
+  "horizon_minutes": 30,
+  "predicted_congested_roads": 1,
+  "summary": {
+   "free_flow": 0,
+   "moderate": 27,
+   "heavy": 0,
+   "severe": 1,
+   "predicted_congested_roads": 1
+  }
+ },
+ "emergency": {
+  "active_routes": 0,
+  "routes_planned": 0,
+  "average_eta_s": null,
+  "last_route": null
+ },
+ "signal_performance": {
+  "runs": 0,
+  "average_wait_reduction_pct": null,
+  "note": "Measured in simulation; varies strongly with the demand scenario.",
+  "last_run": null
+ },
+ "simulation": {
+  "running": false,
+  "data_source": "simulated",
+  "tick": 0,
+  "sim_time": null,
+  "signal_mode": null,
+  "tick_interval_s": null,
+  "minutes_per_tick": null,
+  "demand_multiplier": null,
+  "connected_clients": 0,
+  "last_error": null
+ }
+}

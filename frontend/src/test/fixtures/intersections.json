@@ -1,0 +1,98 @@
+[
+ {
+  "id": 1,
+  "name": "Northgate Circle",
+  "latitude": 18.529153,
+  "longitude": 73.838511
+ },
+ {
+  "id": 2,
+  "name": "Market Square",
+  "latitude": 18.529611,
+  "longitude": 73.845801
+ },
+ {
+  "id": 3,
+  "name": "Civic Centre",
+  "latitude": 18.52945,
+  "longitude": 73.853612
+ },
+ {
+  "id": 4,
+  "name": "Lakeside Junction",
+  "latitude": 18.528781,
+  "longitude": 73.86121
+ },
+ {
+  "id": 5,
+  "name": "University Gate",
+  "latitude": 18.521952,
+  "longitude": 73.838907
+ },
+ {
+  "id": 6,
+  "name": "Old Town Cross",
+  "latitude": 18.521998,
+  "longitude": 73.845827
+ },
+ {
+  "id": 7,
+  "name": "Central Station",
+  "latitude": 18.522494,
+  "longitude": 73.854258
+ },
+ {
+  "id": 8,
+  "name": "Tech Park Junction",
+  "latitude": 18.522073,
+  "longitude": 73.860813
+ },
+ {
+  "id": 9,
+  "name": "Riverside Junction",
+  "latitude": 18.515978,
+  "longitude": 73.839627
+ },
+ {
+  "id": 10,
+  "name": "Courthouse Square",
+  "latitude": 18.515908,
+  "longitude": 73.846255
+ },
+ {
+  "id": 11,
+  "name": "City Hospital Junction",
+  "latitude": 18.516467,
+  "longitude": 73.853165
+ },
+ {
+  "id": 12,
+  "name": "Stadium Circle",
+  "latitude": 18.516302,
+  "longitude": 73.860905
+ },
+ {
+  "id": 13,
+  "name": "Southgate Circle",
+  "latitude": 18.508502,
+  "longitude": 73.838465
+ },
+ {
+  "id": 14,
+  "name": "Harbour Cross",
+  "latitude": 18.508732,
+  "longitude": 73.846843
+ },
+ {
+  "id": 15,
+  "name": "Industrial Junction",
+  "latitude": 18.508553,
+  "longitude": 73.853914
+ },
+ {
+  "id": 16,
+  "name": "Airport Link Junction",
+  "latitude": 18.509194,
+  "longitude": 73.861021
+ }
+]
