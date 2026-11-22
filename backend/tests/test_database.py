@@ -88,6 +88,33 @@ def test_reset_then_reseed_works_and_keeps_real_users(db):
     assert db.query(User).filter(User.email.like("%@flowsense.demo")).count() == 3
 
 
+def test_ensure_demo_accounts_is_idempotent(db):
+    from app.seed import ensure_demo_accounts
+
+    before = ensure_demo_accounts(db, "Another-Pass-123")
+    assert len(before["created"]) == 0
+    assert len(before["existing"]) == 3
+
+    existing = db.query(User).filter_by(email="operator@flowsense.demo").one()
+    original_hash = existing.password_hash
+    again = ensure_demo_accounts(db, "Different-Pass-456")
+    db.expire_all()
+    existing = db.query(User).filter_by(email="operator@flowsense.demo").one()
+    assert again["created"] == []
+    assert len(again["existing"]) == 3
+    assert existing.password_hash == original_hash
+
+
+def test_sync_demo_passwords_is_explicit(db):
+    from app.core.security import verify_password
+    from app.seed import sync_demo_passwords
+
+    result = sync_demo_passwords(db, "Sync-Pass-789")
+    assert len(result["updated"]) == 3
+    operator = db.query(User).filter_by(email="operator@flowsense.demo").one()
+    assert verify_password("Sync-Pass-789", operator.password_hash)
+
+
 def test_failed_seed_leaves_nothing_behind(session_factory):
     """The seed is atomic: if it fails half-way, no partial city remains."""
     from sqlalchemy import func, select

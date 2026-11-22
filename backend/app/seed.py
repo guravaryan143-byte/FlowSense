@@ -9,7 +9,6 @@ from __future__ import annotations
 import argparse
 import logging
 import os
-import secrets
 from datetime import datetime, timedelta, timezone
 
 import numpy as np
@@ -91,11 +90,49 @@ def reset_all(db: Session) -> None:
     # Only the demo accounts are removed; accounts people registered themselves are kept.
     db.execute(delete(User).where(User.email.like("%@flowsense.demo")))
     db.commit()
-    if db.bind.dialect.name == "postgresql":  # make ids start at 1 again
+    if db.bind.dialect.name == "postgresql":
         from sqlalchemy import text
-        for t in ("intersections", "roads", "traffic_signals", "emergency_vehicles", "incidents", "accident_records"):
-            db.execute(text(f"ALTER SEQUENCE {t}_id_seq RESTART WITH 1"))
+        for table in ("intersections", "roads", "traffic_signals", "emergency_vehicles", "incidents", "accident_records"):
+            db.execute(text(f"ALTER SEQUENCE {table}_id_seq RESTART WITH 1"))
         db.commit()
+
+
+DEMO_ACCOUNTS = (
+    ("Demo Admin", "admin@flowsense.demo", "admin"),
+    ("Demo Operator", "operator@flowsense.demo", "operator"),
+    ("Demo Viewer", "viewer@flowsense.demo", "viewer"),
+)
+
+
+def ensure_demo_accounts(db: Session, password: str) -> dict:
+    """Create missing demo accounts without changing existing account passwords."""
+    if not password:
+        raise RuntimeError("SEED_DEFAULT_PASSWORD is required to initialize demo accounts")
+    created: list[str] = []
+    existing: list[str] = []
+    for name, email, role in DEMO_ACCOUNTS:
+        user = db.scalar(select(User).where(User.email == email))
+        if user is not None:
+            existing.append(email)
+            continue
+        db.add(User(name=name, email=email, role=role, password_hash=hash_password(password), is_active=True))
+        created.append(email)
+    db.commit()
+    return {"created": created, "existing": existing}
+
+
+def sync_demo_passwords(db: Session, password: str) -> dict:
+    """Explicitly synchronize demo account passwords; never invoked by normal seeding."""
+    if not password:
+        raise RuntimeError("SEED_DEFAULT_PASSWORD is required to synchronize demo accounts")
+    updated: list[str] = []
+    for _name, email, _role in DEMO_ACCOUNTS:
+        user = db.scalar(select(User).where(User.email == email))
+        if user is not None:
+            user.password_hash = hash_password(password)
+            updated.append(email)
+    db.commit()
+    return {"updated": updated}
 
 
 def seed_database(db: Session, history_days: int = 8, accident_count: int = 700, seed: int = 42,
@@ -156,9 +193,8 @@ def seed_database(db: Session, history_days: int = 8, accident_count: int = 700,
 
     credentials = []
     if default_password:
-        for name, email, role in (("Demo Admin", "admin@flowsense.demo", "admin"), ("Demo Operator", "operator@flowsense.demo", "operator"),
-                                  ("Demo Viewer", "viewer@flowsense.demo", "viewer")):
-            db.add(User(name=name, email=email, role=role, password_hash=hash_password(default_password)))
+        for name, email, role in DEMO_ACCOUNTS:
+            db.add(User(name=name, email=email, role=role, password_hash=hash_password(default_password), is_active=True))
             credentials.append((email, role))
     db.commit()
     return {"intersections": len(node_specs), "roads": len(roads), "traffic_records": len(rows), "accidents": len(acc),
@@ -171,20 +207,44 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     p = argparse.ArgumentParser(description="Seed FlowSense with SIMULATED demo data")
     p.add_argument("--reset", action="store_true", help="delete existing FlowSense data first")
+    p.add_argument("--ensure-demo-accounts", action="store_true",
+                   help="create missing demo accounts in an existing database; never changes existing passwords")
+    p.add_argument("--sync-demo-passwords", action="store_true",
+                   help="explicitly replace existing demo account passwords from SEED_DEFAULT_PASSWORD")
     p.add_argument("--days", type=int, default=8, help="days of simulated traffic history (default 8)")
     p.add_argument("--accidents", type=int, default=700)
     args = p.parse_args()
     password = os.environ.get("SEED_DEFAULT_PASSWORD") or ""
-    generated = False
-    if not password:
-        password, generated = secrets.token_urlsafe(12) + "aA1!", True
+    settings = get_settings()
+    if settings.environment.lower() == "production" and (args.reset or args.ensure_demo_accounts or args.sync_demo_passwords):
+        p.error("Demo data seeding and demo-account initialization are disabled in production")
+    if args.ensure_demo_accounts and args.sync_demo_passwords:
+        p.error("--ensure-demo-accounts and --sync-demo-passwords are mutually exclusive")
+    if args.ensure_demo_accounts:
+        if not password:
+            p.error("SEED_DEFAULT_PASSWORD is required with --ensure-demo-accounts")
+        with get_session_factory()() as db:
+            result = ensure_demo_accounts(db, password)
+        print("Demo accounts ensured:")
+        print(f"  created: {len(result['created'])}")
+        print(f"  existing unchanged: {len(result['existing'])}")
+        return
+    if args.sync_demo_passwords:
+        if not password:
+            p.error("SEED_DEFAULT_PASSWORD is required with --sync-demo-passwords")
+        with get_session_factory()() as db:
+            result = sync_demo_passwords(db, password)
+        print("Demo account passwords synchronized:")
+        print(f"  updated: {len(result['updated'])}")
+        return
     with get_session_factory()() as db:
         if args.reset:
             reset_all(db)
+        if not password:
+            p.error("SEED_DEFAULT_PASSWORD is required for initial database seeding")
         result = seed_database(db, args.days, args.accidents, default_password=password)
     print("Seeded (SIMULATED data):", {k: v for k, v in result.items() if k != "demo_users"})
     print("Demo accounts:", ", ".join(f"{e} ({r})" for e, r in result["demo_users"]))
-    print(f"Password: {password}" + ("   <- randomly generated, shown once" if generated else "   (from SEED_DEFAULT_PASSWORD)"))
 
 
 if __name__ == "__main__":

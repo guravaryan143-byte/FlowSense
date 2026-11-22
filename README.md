@@ -7,11 +7,24 @@
 FlowSense monitors road conditions, predicts congestion, optimises traffic-signal timing, plans emergency-vehicle routes,
 finds historical accident hotspots and manages incidents and road closures, through a FastAPI backend and a React dashboard.
 
+## Problem statement
+
+Traffic operations teams need a single interface for monitoring congestion, forecasting road conditions, understanding
+historical accident patterns, reporting incidents and evaluating signal and route changes. FlowSense provides a local,
+database-backed demonstration of those workflows using a clearly labelled fictional road network and simulated data.
+
+## Objectives
+
+- Demonstrate end-to-end monitoring of a simulated road network.
+- Combine REST APIs, WebSocket updates and role-based operations in one application.
+- Apply algorithms and machine learning to congestion, routing, signals and accident hotspots.
+- Provide reproducible local setup, testing and database migration workflows.
+
 ## Build status (read this first)
 
 | Part | Status | How it was verified |
 |---|---|---|
-| Backend API (FastAPI, 35 endpoints + WebSocket) | **Done** | 129 automated tests; real PostgreSQL 16 + real Uvicorn + real WebSocket client |
+| Backend API (FastAPI, 35 endpoints + WebSocket) | **Done** | 131 automated tests; real PostgreSQL 16 + real Uvicorn + real WebSocket client |
 | PostgreSQL schema + Alembic migration | **Done** | upgrade, `alembic check` (no drift), downgrade/upgrade round trip on PostgreSQL 16 |
 | Seed data, simulator, dataset generator | **Done** | tests + manual runs (`--reset` twice) |
 | ML pipeline (Random Forest) with baselines | **Done** | tests; metrics below were produced by `python -m app.ml.train` |
@@ -19,8 +32,8 @@ finds historical accident hotspots and manages incidents and road closures, thro
 | React frontend (landing page, 8 pages + login, Leaflet maps, Recharts) | **Done; landing page checked in a real browser** | strict TypeScript, 166 unit/component tests, production build, Vite dev proxy for REST + WebSocket, 7 integration tests against the real backend; landing page and every existing page loaded in headless Chromium against the live backend (see the caveat below for what that did *not* cover) |
 | Frontend ↔ backend contract | **Done** | TypeScript types are *generated* from the backend's OpenAPI document; checked to be in sync |
 | Pinned `requirements.txt` / `package-lock.json` | **Done** | fresh virtualenv install → all backend tests pass |
-| Docker Compose / Dockerfile | Written, **not run** | Docker is not available in the build sandbox |
-| Windows PowerShell commands below | Written, **not run on Windows** | the same steps were run on Linux |
+| Docker Compose / Dockerfile | **Verified locally** | Docker Compose PostgreSQL and backend containers were built and started |
+| Windows PowerShell commands below | **Verified on Windows** | Phase 2 setup and test commands were executed in Windows PowerShell |
 | Optional SUMO + TraCI integration | **Not built yet** | planned |
 | Vercel / Render deployment | **Not performed** | instructions below are untested |
 
@@ -98,6 +111,16 @@ Recharts 3 · Lucide icons · Vitest + Testing Library.
 
 ## Local setup on Windows (PowerShell)
 
+### One-command local startup
+
+From the project root, the existing Windows startup script starts PostgreSQL, applies Alembic migrations, and opens the backend and frontend in separate PowerShell windows:
+
+```powershell
+.\start-local.ps1
+```
+
+The script uses the existing `.env` and Docker volume. It does not recreate the database or remove data.
+
 Prerequisites: Python 3.12, Node.js 20+ (22 was used), Git, and either Docker Desktop **or** PostgreSQL 16.
 
 ```powershell
@@ -148,7 +171,7 @@ banner. Sign in as `operator@flowsense.demo` (password = your `SEED_DEFAULT_PASS
 
 ```powershell
 # Tests and production build
-cd FlowSense\backend;  pytest                       # 129 tests, ~25 s, in-memory SQLite, no PostgreSQL needed
+cd FlowSense\backend;  pytest                       # 131 tests, in-memory SQLite, no PostgreSQL needed
 cd FlowSense\frontend; npm test                     # 166 tests
 npm run build                                       # type-check + production bundle in dist/
 # optional: test the frontend's API layer against the REAL running backend

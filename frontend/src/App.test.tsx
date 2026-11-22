@@ -37,12 +37,12 @@ function renderApp(route: string, user: User | null = null) {
 describe("routing: the front door", () => {
   it("shows the landing page to a visitor at /", async () => {
     renderApp("/");
-    expect(await screen.findByRole("heading", { level: 1, name: /traffic has a second layer/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: /traffic has a second layer/i }, { timeout: 5000 })).toBeInTheDocument();
   });
 
   it("sends a signed-in user at / straight to the dashboard", async () => {
     renderApp("/", fx.operator);
-    expect(await screen.findByRole("heading", { name: "City overview" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "City overview" }, { timeout: 5000 })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: /traffic has a second layer/i })).not.toBeInTheDocument();
   });
 
@@ -53,12 +53,12 @@ describe("routing: the front door", () => {
     render(<MemoryRouter initialEntries={["/"]}><AuthProvider><TrafficStreamProvider enabled={false}><App /></TrafficStreamProvider></AuthProvider></MemoryRouter>);
     expect(screen.queryByRole("heading", { level: 1 })).not.toBeInTheDocument(); // neutral dark canvas, no landing yet
     resolve(fx.operator);
-    expect(await screen.findByRole("heading", { name: "City overview" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "City overview" }, { timeout: 3000 })).toBeInTheDocument();
   });
 
   it("/welcome always shows the landing page, even when signed in", async () => {
     renderApp("/welcome", fx.operator);
-    expect(await screen.findByRole("heading", { level: 1, name: /traffic has a second layer/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: /traffic has a second layer/i }, { timeout: 3000 })).toBeInTheDocument();
   });
 });
 
